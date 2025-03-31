@@ -1,0 +1,172 @@
+.services-page {
+  padding: 5rem 2rem;
+  background: #fffaf7;
+  font-family: 'Cormorant Garamond', serif;
+  color: #d4af37;
+}
+
+.services-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.services-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.services-divider {
+  width: 60px;
+  height: 4px;
+  background: #d4af37;
+  margin: 1rem auto 1.5rem;
+  border-radius: 2px;
+}
+
+.services-header p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Grid */
+.services-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card */
+.service-card {
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border: 2px solid transparent;
+}
+
+.service-card:hover {
+  transform: scale(1.02);
+  border-color: #d4af37;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+}
+
+/* Overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease;
+}
+
+.service-card:hover .card-overlay {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Tag */
+.category-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1b1f3b;
+  font-size: 1.0rem;
+  font-weight: bolder;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  z-index: 3;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Content */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  padding: 2rem;
+  color: white;
+  transform: translateY(20%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 2;
+}
+
+.service-card:hover .card-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: #eee;
+}
+
+/* Button */
+.glass-btn {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.5rem 1.4rem;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  left: -75%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg);
+  transition: all 0.6s ease;
+}
+
+.glass-btn:hover::before {
+  left: 130%;
+}
+
+.glass-btn:hover {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: white;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-card {
+    height: 320px;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-content h3 {
+    font-size: 1.2rem;
+  }
+}
