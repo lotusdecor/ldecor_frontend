@@ -61,7 +61,7 @@ body {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #d4af37;
+  color: rgb(56, 62, 61);
   padding-bottom: 4px;
   position: relative;
   transition: color 0.3s ease;
@@ -87,7 +87,7 @@ body {
 }
 
 .navbar-links li a:hover {
-  color: #2d2c2a;
+  color: #d4af37;
 }
 
 /* Hamburger */
