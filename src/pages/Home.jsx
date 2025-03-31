@@ -40,7 +40,7 @@ function Home() {
           <p className="luxury-tagline">
             Crafting unforgettable experiences with grace, charm, and timeless beauty.
           </p>
-          <a href="/services" className="cta-btn shine">
+          <a href="/gallery" className="cta-btn shine">
             Explore Our Creations
           </a>
         </div>
