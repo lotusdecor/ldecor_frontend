@@ -2,7 +2,7 @@
 import '../styles/About.css';
 import founderImg from '../assets/founders/founder.jpg';
 import cofounderImg from '../assets/founders/cofounder.jpg';
-import about from '../assets/about.jpg';
+import about from '../assets/hero.jpg';
 
 function About() {
   return (

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
-import heroImg from "../assets/hero.jpg";
+import heroImg from "../assets/lotus.jpg";
 import client1 from "../assets/testimonials/client1.jpg";
 import client2 from "../assets/testimonials/client2.jpg";
 import client3 from "../assets/testimonials/client3.jpg";
