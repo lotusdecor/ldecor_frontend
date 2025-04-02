@@ -45,38 +45,31 @@ const services = [
   }
 ];
 
-
-
 function Services() {
   return (
     <div className="services-page">
-      <div className="services-header" data-aos="fade-up">
+      <section className="services-description" data-aos="fade-up">
         <h2>Crafted Services</h2>
-        <div className="services-divider" />
-        <p>
-          Each offering is designed with elegance and intention — curated to make every space unforgettable.
-        </p>
-      </div>
+        <div className="services-divider"></div>
+        <p>Each offering is designed with elegance and intention — curated to make every space unforgettable.</p>
+      </section>
 
-      <div className="services-gallery">
-        {services.map((service, i) => (
-          <div
-            className="service-card"
-            key={i}
-            style={{ backgroundImage: `url(${service.image})` }}
-            data-aos="zoom-in-up"
-            data-aos-delay={i * 100}
-          >
-            <span className="category-tag">{service.category}</span>
-            <div className="card-overlay" />
-            <div className="card-content">
-              <h3>{service.title}</h3>
+      {/* Services List */}
+      <section className="services-list">
+        {services.map((service, index) => (
+          <div className={`service-card ${index % 2 !== 0 ? 'reverse' : ''}`} key={index}>
+            <div className="service-image framed" data-aos="zoom-in">
+              <img src={service.image} alt={service.title} />
+              <span className="category-tag">{service.category}</span>
+            </div>
+            <div className="service-text" data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
+              <h2>{service.title}</h2>
               <p>{service.description}</p>
-              <a href="/contact" className="glass-btn">Book Now</a>
+              <a href="/contact" className="service-btn">Book Now</a>
             </div>
           </div>
         ))}
-      </div>
+      </section>
     </div>
   );
 }
