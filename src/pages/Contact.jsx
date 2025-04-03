@@ -134,7 +134,7 @@ const Contact = memo(() => {
             whileHover={{ scale: 1.01 }}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2778.14307974429!2d-96.9092137353262!3d32.74672250166916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9ada14f4222b%3A0x873f2bfda6e65267!2s135%20N%20Bond%20Ave%2C%20Dallas%2C%20TX%2075211%2C%20USA!5e0!3m2!1sen!2sin!4v1743419106453!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6696.1489937245515!2d-96.82996381836749!3d32.949042505501446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c21301cd36de9%3A0x6d00286db264afb8!2s14800%20Quorum%20Dr%2C%20Dallas%2C%20TX%2075254!5e0!3m2!1sen!2sus!4v1743693641805!5m2!1sen!2sus"
               allowFullScreen
               loading="lazy"
               title="Lotus Decor Map"
