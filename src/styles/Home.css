@@ -309,6 +309,81 @@ body {
   text-overflow: ellipsis;
 }
 
+.testimonial-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.testimonial-scroller {
+  display: flex;
+  width: max-content;
+  gap: 2rem;
+  animation: scrollLoop 15s linear infinite;
+}
+
+/* Perfect Infinite Loop */
+@keyframes scrollLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.33%);
+  }
+}
+
+/* Pause scrolling when hovered */
+.testimonial-wrapper:hover .testimonial-scroller {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  width: 280px;
+  flex-shrink: 0;
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.02);
+}
+
+.testimonial-img-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.testimonial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text Overlay */
+.testimonial-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.testimonial-card:hover .testimonial-overlay {
+  transform: translateY(0);
+}
+
+
 /* Ken Burns Animation */
 .kenburns {
   animation: kenburnsZoom 18s ease-in-out infinite alternate;

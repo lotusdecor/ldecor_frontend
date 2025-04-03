@@ -68,39 +68,45 @@ function Home() {
 
       {/* Testimonials */}
       <section className="testimonials" data-aos="fade-up">
-        <h2>What Our Clients Say</h2>
-        <div className="divider" />
-        <div className="testimonial-grid">
-          {[
-            {
-              name: "Anjali Mehra",
-              quote: "Lotus Decors made our wedding magical. The team was detail-oriented, warm, and incredibly creative!",
-              img: client1,
-            },
-            {
-              name: "Ravi Patel",
-              quote: "From the flowers to the lighting, everything was breathtaking. Our guests still talk about it!",
-              img: client2,
-            },
-            {
-              name: "Priya Sharma",
-              quote: "They captured our style perfectly and brought elegance to every inch of our event.",
-              img: client3,
-            },
-          ].map((item, index) => (
-            <div className="testimonial-card" key={index}>
-              <div
-                className="testimonial-img"
-                style={{ backgroundImage: `url(${item.img})` }}
-              ></div>
-              <div className="testimonial-overlay">
-                <h3>{item.name}</h3>
-                <p>{item.quote}</p>
-              </div>
-            </div>
-          ))}
+  <h2>What Our Clients Say</h2>
+  <div className="divider" />
+  <div className="testimonial-wrapper">
+    <div className="testimonial-scroller">
+      {/* Tripling the testimonial set to ensure seamless looping */}
+      {[...Array(3)].flatMap(() => [
+        {
+          name: "Anjali Mehra",
+          quote: "Lotus Decors made our wedding magical. The team was detail-oriented, warm, and incredibly creative!",
+          img: client1,
+        },
+        {
+          name: "Ravi Patel",
+          quote: "From the flowers to the lighting, everything was breathtaking. Our guests still talk about it!",
+          img: client2,
+        },
+        {
+          name: "Priya Sharma",
+          quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+          img: client3,
+        },
+      ]).map((item, index) => (
+        <div className="testimonial-card" key={index}>
+          <div className="testimonial-img-container">
+            <img src={item.img} alt={item.name} className="testimonial-img" />
+          </div>
+          <div className="testimonial-overlay">
+            <h3>{item.name}</h3>
+            <p>{item.quote}</p>
+          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
 
       {/* CTA */}
       <section className="cta-section" data-aos="zoom-in">
