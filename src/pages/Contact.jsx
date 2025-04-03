@@ -46,9 +46,9 @@ const SOCIAL_LINKS = [
 ];
 
 const CONTACT_INFO = [
-  { icon: <FaPhoneAlt className="icon" />, text: "+91 98765 43210" },
-  { icon: <FaEnvelope className="icon" />, text: "lotusdecors@gmail.com" },
-  { icon: <FaSearchLocation className="icon" />, text: "135 N Bond Ave, Dallas, TX" }
+  { icon: <FaPhoneAlt className="icon" />, text: "+1(484)302-9331 / +1(732)912-8810" },
+  { icon: <FaEnvelope className="icon" />, text: "info@lotusdecorandevents.com" },
+  { icon: <FaSearchLocation className="icon" />, text: "14800 Quorum Dr, Dallas, Tx 75254" }
 ];
 
 const Contact = memo(() => {
