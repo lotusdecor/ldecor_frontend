@@ -173,7 +173,7 @@ const Contact = memo(() => {
 
             <motion.button
               type="submit"
-              className="shine-btn"
+              className="contactshine-btn"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -106,7 +106,7 @@ function Home() {
       {/* CTA */}
       <section className="cta-section" data-aos="zoom-in">
         <h2>Let’s Make Your Dream Event Come True</h2>
-        <Link to = "/contact" className="cta-btn outlined"> Book a Consultation </Link>
+        <Link to = "/contact" className="shine-btn"> Book a Consultation </Link>
       </section>
     </div>
   );
