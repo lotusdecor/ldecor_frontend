@@ -103,10 +103,6 @@ function Home() {
   </div>
 </section>
 
-
-
-
-
       {/* CTA */}
       <section className="cta-section" data-aos="zoom-in">
         <h2>Let’s Make Your Dream Event Come True</h2>
