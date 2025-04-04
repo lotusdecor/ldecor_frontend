@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import heroImg from "../assets/lotus.jpg";
@@ -39,9 +40,7 @@ function Home() {
           <p className="luxury-tagline">
             Crafting unforgettable experiences with grace, charm, and timeless beauty.
           </p>
-          <a href="/gallery" className="cta-btn shine">
-            Explore Our Creations
-          </a>
+          <Link to = "/gallery" className="cta-btn shine"> Explore Our Creations </Link>
         </div>
       </section>
 
@@ -111,9 +110,7 @@ function Home() {
       {/* CTA */}
       <section className="cta-section" data-aos="zoom-in">
         <h2>Let’s Make Your Dream Event Come True</h2>
-        <a href="/contact" className="cta-btn outlined">
-          Book a Consultation
-        </a>
+        <Link to = "/contact" className="cta-btn outlined"> Book a Consultation </Link>
       </section>
     </div>
   );

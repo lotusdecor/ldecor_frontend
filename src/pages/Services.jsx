@@ -65,7 +65,7 @@ function Services() {
             <div className="service-text" data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
               <h2>{service.title}</h2>
               <p>{service.description}</p>
-              <a href="/contact" className="service-btn">Book Now</a>
+              <Link to = "/contact" className="service-btn"> Book Now </Link>
             </div>
           </div>
         ))}
