@@ -6,9 +6,6 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <a href="/" className="footer-logo">
-          <img src={logo} alt="Logo" />
-        </a>
 
         <div className="footer-socials">
           <a href="https://www.instagram.com/thoranamdecors/" aria-label="Instagram"><FaInstagram /></a>
