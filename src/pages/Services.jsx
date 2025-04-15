@@ -27,10 +27,10 @@ const services = [
     category: 'Half-Saree/Dothi Ceremony',
   },
   {
-    title: 'Reception Decor',
-    description: 'Stylish and elegant arrangements for a grand post-wedding celebration.',
+    title: 'Cocktail Events',
+    description: 'Vibrant setups to elevate your evening with style, sparkle, and celebration.',
     image: img4,
-    category: 'Reception',
+    category: 'Cocktail Events',
   },
   {
     title: 'Milestone Birthday Celebrations',

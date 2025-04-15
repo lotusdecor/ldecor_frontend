@@ -10,7 +10,7 @@ function About() {
       {/* Hero Section */}
       <section className="about-hero-section" style={{ backgroundImage: `url(${about})` }}>
         <div className="about-hero-overlay">
-          <h1 data-aos="fade-down">About Lotus Decors</h1>
+          <h1 data-aos="zoom-in">About Lotus Decors</h1>
          {/*}
          <p data-aos="fade-up">
           Divine aesthetics and timeless elegance — curated in every style. <br />
