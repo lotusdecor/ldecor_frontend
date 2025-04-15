@@ -10,7 +10,7 @@ function About() {
       {/* Hero Section */}
       <section className="about-hero-section" style={{ backgroundImage: `url(${about})` }}>
         <div className="about-hero-overlay">
-          <h1 data-aos="zoom-in">About Lotus Decors</h1>
+          <h1 data-aos="zoom-in">About Us</h1>
          {/*}
          <p data-aos="fade-up">
           Divine aesthetics and timeless elegance — curated in every style. <br />
@@ -23,13 +23,13 @@ function About() {
 
       {/* Description */}
       <section className="about-description" data-aos="fade-up">
-        <p data-aos="fade-down" style={{ fontSize: '20px' }}>
+        <p data-aos="fade-down" style={{ fontSize: '22px' }}>
         Divine aesthetics and timeless elegance — curated in every style.
         </p>
-        <p data-aos="fade-right" style={{ fontSize: '20px' }}>
+        <p data-aos="fade-right" style={{ fontSize: '22px' }}>
         By women, for women, and of women — crafting elite celebrations, flawlessly styled to perfection.
         </p>
-        <p data-aos="fade-up" style={{ fontSize: '20px' }}>Your special moments deserve nothing less than perfection. 
+        <p data-aos="fade-up" style={{ fontSize: '22px' }}>Your special moments deserve nothing less than perfection. 
         Let’s craft memories that shine forever.</p>
       </section>
 
@@ -41,7 +41,7 @@ function About() {
           </div>
           <div className="founder-text" data-aos="fade-left">
             <h2>Sneha Gorijala</h2>
-            <p class="tagline" style={{ fontSize: '25px' }}>Founder and Creative Head</p>
+            <p class="tagline" style={{ fontSize: '22px' }}>Founder and Creative Head</p>
             <p>"Design is the silent ambassador of elegance."</p>
           </div>
         </div>
@@ -49,7 +49,7 @@ function About() {
         <div className="founder-card">
           <div className="founder-text" data-aos="fade-right">
             <h2>Swetha Kongara</h2>
-            <p class="tagline" style={{ fontSize: '25px' }}>Co-Founder, Director of Finance, Sales & Business Relations</p>
+            <p class="tagline" style={{ fontSize: '22 px' }}>Co-Founder, Director of Finance, Sales & Business Relations</p>
             <p>Balancing motherhood while navigating different jobs has always kept me on my toes, but it’s also what fuels my passion and keeps me grounded. 
               In the midst of life’s everyday hustle, I discovered a creative spark that turned into something much bigger — a deep love for designing events and crafting meaningful, beautiful spaces. What began as a simple outlet soon became my true calling. 
               And when your heart is in it, even the long hours and endless tasks feel like part of the joy.</p>
