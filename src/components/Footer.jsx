@@ -1,6 +1,6 @@
 import '../styles/Footer.css';
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
-import logo from '../assets/lotus_logo.png'; // Ensure the path is correct
+import logo from '../assets/lono_with_name.png'; // Ensure the path is correct
 
 function Footer() {
   return (
@@ -13,7 +13,7 @@ function Footer() {
         <div className="footer-socials">
           <a href="https://www.instagram.com/thoranamdecors/" aria-label="Instagram"><FaInstagram /></a>
           <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
-          <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+          <a href="https://www.facebook.com/ThoranamDecors/" aria-label="Facebook"><FaFacebookF /></a>
         </div>
       </div>
 

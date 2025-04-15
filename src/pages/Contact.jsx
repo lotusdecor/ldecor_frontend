@@ -16,7 +16,7 @@ const ANIMATION_VARIANTS = {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,  // Reduced stagger time for faster load
+        staggerChildren: 0.15,
         delayChildren: 0.2
       }
     }
@@ -40,7 +40,7 @@ const ANIMATION_VARIANTS = {
 };
 
 const SOCIAL_LINKS = [
-  { icon: <FaFacebookF />, href: "#" },
+  { icon: <FaFacebookF />, href: "https://www.facebook.com/ThoranamDecors/" },
   { icon: <FaInstagram />, href: "https://www.instagram.com/thoranamdecors/" },
   { icon: <FaWhatsapp />, href: "#" }
 ];
@@ -48,7 +48,7 @@ const SOCIAL_LINKS = [
 const CONTACT_INFO = [
   { icon: <FaPhoneAlt className="icon" />, text: "+1(484)302-9331 / +1(732)912-8810" },
   { icon: <FaEnvelope className="icon" />, text: "info@lotusdecorandevents.com" },
-  { icon: <FaSearchLocation className="icon" />, text: "14800 Quorum Dr, Dallas, Tx 75254" }
+  { icon: <FaSearchLocation className="icon" />, text: "14800 Quorum Dr, Suite # 269, Dallas, Tx 75254" }
 ];
 
 const Contact = memo(() => {
@@ -57,9 +57,8 @@ const Contact = memo(() => {
       className="contact-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}  // Slightly reduced duration for snappiness
+      transition={{ duration: 0.6 }}
     >
-      {/* Title */}
       <motion.h2 
         className="contact-title"
         initial={{ y: -40, opacity: 0 }}
@@ -75,17 +74,16 @@ const Contact = memo(() => {
         />
       </motion.h2>
 
-      {/* Main Container */}
       <motion.div 
         className="contact-container"
         variants={ANIMATION_VARIANTS.container}
         initial="hidden"
         animate="visible"
-        layout  // Improves animation handling for flexbox elements
+        layout
       >
         {/* Left Column */}
         <div className="contact-left-column">
-          {/* Contact Details Card */}
+          {/* Contact Details */}
           <motion.div 
             className="contact-card"
             variants={ANIMATION_VARIANTS.item}
@@ -99,7 +97,7 @@ const Contact = memo(() => {
               {CONTACT_INFO.map((info, index) => (
                 <motion.p 
                   key={index}
-                  whileTap={{ scale: 0.98 }}  // Optimized from whileHover
+                  whileTap={{ scale: 0.98 }}
                 >
                   {info.icon} {info.text}
                 </motion.p>
@@ -108,7 +106,7 @@ const Contact = memo(() => {
             
             <motion.div 
               className="social-links"
-              initial={false}  // Prevents unnecessary reanimations
+              initial={false}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
@@ -127,18 +125,24 @@ const Contact = memo(() => {
             </motion.div>
           </motion.div>
 
-          {/* Map Card */}
+          {/* Inquiry Button */}
           <motion.div 
-            className="map-card"
+            className="inquiry-button-card"
             variants={ANIMATION_VARIANTS.item}
             whileHover={{ scale: 1.01 }}
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6696.1489937245515!2d-96.82996381836749!3d32.949042505501446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c21301cd36de9%3A0x6d00286db264afb8!2s14800%20Quorum%20Dr%2C%20Dallas%2C%20TX%2075254!5e0!3m2!1sen!2sus!4v1743693641805!5m2!1sen!2sus"
-              allowFullScreen
-              loading="lazy"
-              title="Lotus Decor Map"
-            />
+            <h3>Have a Custom Request?</h3>
+            <div className="inquiry-btn-wrapper">
+  <a 
+    href="https://forms.gle/your-form-link" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="contactshine-btn inquiry-btn"
+  >
+    Submit Your Inquiry
+  </a>
+</div>
+
           </motion.div>
         </div>
 
@@ -149,14 +153,12 @@ const Contact = memo(() => {
           animate={ANIMATION_VARIANTS.floating}
           whileHover={{ y: -3 }}
         >
-          <motion.h3>Let's Talk</motion.h3>
-          
           <form className="contact-form">
             {['Name', 'Email', 'Message'].map((field) => (
               <motion.div 
                 key={field}
                 className="form-group"
-                whileTap={{ scale: 0.98 }} // Prevents too much hover computation
+                whileTap={{ scale: 0.98 }}
               >
                 <label>{field}</label>
                 {field === 'Message' ? (
