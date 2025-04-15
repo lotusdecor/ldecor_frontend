@@ -121,6 +121,8 @@ body {
 }
 
 .hero-content p.luxury-tagline {
+  width: 75%;
+  line-height: 2.5rem;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.7rem;
   font-weight: 600;
