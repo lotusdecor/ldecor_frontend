@@ -10,7 +10,7 @@ function About() {
       {/* Hero Section */}
       <section className="about-hero-section" style={{ backgroundImage: `url(${about})` }}>
         <div className="about-hero-overlay">
-        <h1 data-aos="zoom-in" style={{ textAlign: 'left' }}>About Us</h1>
+        <h1 data-aos="zoom-in">About Us</h1>
          {/*}
          <p data-aos="fade-up">
           Divine aesthetics and timeless elegance — curated in every style. <br />
