@@ -19,59 +19,60 @@
   margin-bottom: 4rem;
   font-weight: 600;
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
 }
 
+/* Decorative Underline */
 .title-underline {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background: #d4af37;
-  transform-origin: left;
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(to right, #d4af37, #fff5b7, #d4af37);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  animation: pulse-glow 2s infinite ease-in-out;
 }
 
-/* Main Container */
-.contact-container {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-  align-items: flex-start;
-  max-width: 1300px;
-  width: 100%;
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  }
 }
 
-/* Columns */
-.contact-left-column {
-  flex: 1;
+/* Center Wrapper */
+.contact-center-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  min-width: 350px;
-  max-width: 500px;
+  align-items: center;
+  gap: 3rem;
+  max-width: 550px;
+  width: 100%;
+  margin: auto;
 }
 
-/* Cards */
+/* Contact Card & Inquiry Button */
 .contact-card,
-.form-card,
 .inquiry-button-card {
   background: white;
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.1);
   padding: 2.5rem;
   transition: all 0.4s ease;
+  max-width: 520px;
+  width: 100%;
 }
 
-.inquiry-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Headings */
 .contact-card h3,
-.form-card h3,
 .inquiry-button-card h3 {
   font-size: 1.8rem;
   color: #d4af37;
@@ -110,58 +111,14 @@
   transition: all 0.3s ease;
 }
 
-/* Form Card */
-.form-card {
-  flex: 1;
-  min-width: 350px;
-  max-width: 500px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-/* Contact Form */
-.contact-form {
+/* Inquiry Button */
+.inquiry-btn-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.contact-form label {
-  font-size: 1.1rem;
-  color: #1b1f3b;
-  font-weight: 500;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 1rem;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-family: 'Cormorant Garamond', serif;
-  transition: all 0.3s ease;
-  background: #fafafa;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #d4af37;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-  outline: none;
-}
-
-.contact-form textarea {
-  resize: vertical;
-  min-height: 180px;
-}
-
-/* Shine Button */
+/* Shine Button Style */
 .contactshine-btn {
   font-family: 'Cormorant Garamond', serif;
   display: inline-block;
@@ -201,19 +158,6 @@
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-  .contact-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contact-left-column,
-  .form-card {
-    width: 100%;
-    max-width: 600px;
-  }
-}
-
 @media (max-width: 768px) {
   .contact-page {
     padding: 4rem 1.5rem;
@@ -225,9 +169,14 @@
   }
 
   .contact-card,
-  .form-card,
   .inquiry-button-card {
     padding: 2rem;
+    max-width: 100%;
+  }
+
+  .contact-center-wrapper {
+    padding: 0 1rem;
+    max-width: 90%;
   }
 }
 
@@ -237,7 +186,6 @@
   }
 
   .contact-card h3,
-  .form-card h3,
   .inquiry-button-card h3 {
     font-size: 1.6rem;
   }
