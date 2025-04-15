@@ -34,32 +34,32 @@ import img24 from '../assets/gallery/img24.jpeg';
 
 const imageData = [
   { src: img1, category: 'Wedding' },
-  { src: img2, category: 'Sangeeth' },
+  { src: img2, category: 'Pre-Wedding' },
   { src: img3, category: 'Birthday' },
   { src: img4, category: 'Graduation' },
   { src: img5, category: 'Wedding' },
-  { src: img6, category: 'Sangeeth' },
+  { src: img6, category: 'Pre-Wedding' },
   { src: img7, category: 'Birthday' },
   { src: img8, category: 'Graduation' },
   { src: img9, category: 'Wedding' },
-  { src: img10, category: 'Sangeeth' },
+  { src: img10, category: 'Pre-Wedding' },
   { src: img11, category: 'Birthday' },
   { src: img12, category: 'Graduation' },
   { src: img13, category: 'Wedding' },
-  { src: img14, category: 'Sangeeth' },
-  { src: img15, category: 'Birthday' },
+  { src: img14, category: 'Pre-Wedding' },
+  { src: img15, category: 'Reception' },
   { src: img16, category: 'Graduation' },
   { src: img17, category: 'Wedding' },
-  { src: img18, category: 'Sangeeth' },
+  { src: img18, category: 'Half-Saree' },
   { src: img19, category: 'Birthday' },
   { src: img20, category: 'Graduation' },
   { src: img21, category: 'Wedding' },
-  { src: img22, category: 'Sangeeth' },
+  { src: img22, category: 'Half-Saree' },
   { src: img23, category: 'Birthday' },
   { src: img24, category: 'Graduation' },
 ];
 
-const categories = ['All', 'Wedding', 'Sangeeth', 'Birthday', 'Graduation'];
+const categories = ['All', 'Wedding', 'Pre-Wedding', 'Half-Saree', 'Reception', 'Birthday', 'Graduation'];
 
 function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All');

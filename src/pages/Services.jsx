@@ -52,7 +52,6 @@ function Services() {
       <section className="services-description" data-aos="fade-up">
         <h2>Crafted Services</h2>
         <div className="services-divider"></div>
-        <p>Each offering is designed with elegance and intention — curated to make every space unforgettable.</p>
       </section>
 
       {/* Services List */}
