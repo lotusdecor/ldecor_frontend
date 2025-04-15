@@ -124,14 +124,14 @@ body {
   width: 100%;
   line-height: 2.5rem;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 600;
   color: transparent;
   background: linear-gradient(to right, #b59b3b, #d4af37, #f9e88b);
   background-clip: text;
   -webkit-background-clip: text;
   text-shadow: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   animation: slideFade 1.2s ease forwards;
   opacity: 0;
   transform: translateY(15px);

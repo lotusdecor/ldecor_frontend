@@ -48,7 +48,6 @@ function Home() {
       {/* Why Us */}
       <section className="our-promise" data-aos="fade-up">
         <h2 data-aos="zoom-in">Why Us?</h2>
-        <div className="divider" />
         <p data-aos="fade-down">
         At <span style={{ fontSize: '22px', fontWeight: 'bold'}}>Lotus Décor & Events</span>, we believe every celebration is a reflection of your unique story — and we bring that vision to life with unmatched creativity, precision, and elegance.
 Unlike one-size-fits-all decor services, we specialize in fully customized setups tailored to your style, budget, and dreams. 

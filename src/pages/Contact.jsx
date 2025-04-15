@@ -58,12 +58,7 @@ const Contact = memo(() => {
         transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
       >
         Get in Touch
-        <motion.span 
-          className="title-underline"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        />
+
       </motion.h2>
 
       <motion.div 

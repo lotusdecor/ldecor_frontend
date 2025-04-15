@@ -82,7 +82,6 @@ function Gallery() {
     <div className="gallery-page">
       <div className="gallery-header" data-aos="fade-up">
         <h2>Our Signature Looks</h2>
-        <div className="gallery-divider" />
         <p>Moments captured with timeless elegance and curated charm.</p>
       </div>
 
