@@ -1,6 +1,6 @@
 import '../styles/Footer.css';
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
-import logo from '../assets/logorbg.png'; // Ensure the path is correct
+import logo from '../assets/lotus_logo.png'; // Ensure the path is correct
 
 function Footer() {
   return (
