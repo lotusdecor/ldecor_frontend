@@ -2,7 +2,7 @@
 import '../styles/About.css';
 import founderImg from '../assets/founders/sneha.jpeg';
 import cofounderImg from '../assets/founders/Shwetha.jpeg';
-import about from '../assets/lotus_about6.jpeg';
+import about from '../assets/lotus_about7.jpeg';
 
 function About() {
   return (

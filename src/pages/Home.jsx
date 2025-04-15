@@ -34,12 +34,13 @@ function Home() {
       <section className="hero">
         <img src={heroImg} alt="Luxury Wedding Decor" className="hero-img kenburns" />
         <div className="hero-content" data-aos="fade-up">
+        <p className="luxury-tagline">
+            Lotus Decor and Events
+          </p>
           <h1 className={`fade-text ${fade ? "fade-in" : "fade-out"}`}>
             {texts[textIndex]}
           </h1>
-          <p className="luxury-tagline">
-            Crafting unforgettable experiences with grace, charm, and timeless beauty.
-          </p>
+
           <Link to = "/gallery" className="cta-btn shine"> Explore Our Creations </Link>
         </div>
       </section>
