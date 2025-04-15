@@ -56,7 +56,8 @@ From grand traditional gatherings to chic modern affairs, we offer bespoke decor
         </p>
         <p data-aos="fade-right">
         What truly sets us apart? We are proud to be the only décor company in Dallas to blend the timeless beauty of <span style={{ fontSize: '22px', fontWeight: 'bold'}}>sola wood</span> flowers with fresh florals — combining elegance with sustainability in every detail.
-As full-time event planners and organizers, we go beyond design. We walk with you through every stage of the event, offering hands-on guidance and support to ensure a seamless, stress-free experience.
+        As <span style={{ fontSize: '22px', fontWeight: 'bold'}}>full-time event planners</span>, we go beyond design—we walk with you through every stage of your event, offering hands-on guidance and unwavering support to ensure a seamless, stress-free experience. 
+        Our role as organizers is to elevate your vision, infuse it with creativity, and execute every detail with elegance and precision.
         </p>
         <p data-aos="fade-up">We deeply value our clients’ voices and believe that <span style={{ fontSize: '22px', fontWeight: 'bold'}}>genuine feedback is the key to growth</span>. Every suggestion, compliment, and critique helps us refine our craft, elevate our services, and continue delivering unforgettable experiences.
 With a personalized approach and an eye for excellence, we meticulously craft every element to exceed expectations — leaving you and your guests with lasting memories and a celebration that speaks volumes.

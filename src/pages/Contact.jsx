@@ -107,15 +107,14 @@ const Contact = memo(() => {
           variants={ANIMATION_VARIANTS.item}
           whileHover={{ scale: 1.01 }}
         >
-          <h3>Have a Custom Request?</h3>
           <div className="inquiry-btn-wrapper">
             <a 
-              href="https://forms.gle/your-form-link" 
+              href="https://forms.gle/MBxMKypqBYaUJTn79" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="contactshine-btn inquiry-btn"
             >
-              Submit Your Inquiry
+              Submit Your Inquiry Here
             </a>
           </div>
         </motion.div>

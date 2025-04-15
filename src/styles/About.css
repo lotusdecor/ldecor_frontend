@@ -51,21 +51,6 @@
   display: inline-block;
 }
 
-.about-heading::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 4px;
-  width: 70px;
-  background: linear-gradient(90deg, #d4af37, #ffd700, #fff3b0);
-  border-radius: 2px;
-  background-size: 200% auto;
-  animation: shimmer-left 2s infinite linear;
-}
-
-
 /* Description */
 .about-description {
   max-width: 850px;
