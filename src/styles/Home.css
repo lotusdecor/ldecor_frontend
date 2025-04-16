@@ -317,7 +317,7 @@ body {
   }
 
   .hero-content p.luxury-tagline {
-    font-size: 2rem;
+    font-size: 1.9rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -326,7 +326,7 @@ body {
   }
 
   .hero-content h1 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
 
   .cta-btn {
