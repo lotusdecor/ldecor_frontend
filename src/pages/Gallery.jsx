@@ -59,7 +59,7 @@ const imageData = [
   { src: img24, category: 'Graduation' },
 ];
 
-const categories = ['All', 'Wedding', 'Pre-Wedding', 'Half-Saree', 'Reception', 'Birthday', 'Graduation'];
+const categories = ['All', 'Wedding', 'Pre-Wedding', 'Half-Saree', 'Birthday', 'Cocktail Events'];
 
 function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All');
