@@ -15,22 +15,24 @@ import img6 from '../assets/gallery/cocktail1.jpg';
 import img7 from '../assets/gallery/cocktail2.jpg';
 import img8 from '../assets/gallery/cocktail3.jpg';
 import img9 from '../assets/gallery/cocktail4.jpg';
-import img10 from '../assets/gallery/img10.jpeg';
-import img11 from '../assets/gallery/img11.jpeg';
-import img12 from '../assets/gallery/img12.jpeg';
-import img13 from '../assets/gallery/img13.jpeg';
-import img14 from '../assets/gallery/img14.jpeg';
-import img15 from '../assets/gallery/img15.jpeg';
-import img16 from '../assets/gallery/img16.jpeg';
-import img17 from '../assets/gallery/img17.jpeg';
-import img18 from '../assets/gallery/img18.jpeg';
-import img19 from '../assets/gallery/img19.jpeg';
-import img20 from '../assets/gallery/img20.jpeg';
-import img21 from '../assets/gallery/img21.jpeg';
-import img22 from '../assets/gallery/img22.jpeg';
-import img23 from '../assets/gallery/img23.jpeg';
-import img24 from '../assets/gallery/img24.jpeg';
-
+import img28 from '../assets/gallery/cocktail5.jpg';
+import img10 from '../assets/gallery/puja1.jpg';
+import img11 from '../assets/gallery/puja2.jpg';
+import img12 from '../assets/gallery/puja3.jpg';
+import img14 from '../assets/gallery/pellikoothuru1.jpg';
+import img15 from '../assets/gallery/pellikoothuru2.jpg';
+import img16 from '../assets/gallery/pellikoothuru3.jpg';
+import img17 from '../assets/gallery/pellikoothuru4.jpg';
+import img18 from '../assets/gallery/pellikoothuru5.jpg';
+import img19 from '../assets/gallery/house1.jpg';
+import img20 from '../assets/gallery/house2.jpg';
+import img21 from '../assets/gallery/house3.jpg';
+import img22 from '../assets/gallery/house4.jpg';
+import img23 from '../assets/gallery/house5.jpg';
+import img24 from '../assets/gallery/house6.jpg';
+import img25 from '../assets/gallery/house7.jpg';
+import img26 from '../assets/gallery/house8.jpg';
+import img27 from '../assets/gallery/house9.jpg';
 
 const imageData = [
   { src: img1, category: 'Wedding' },
@@ -38,31 +40,34 @@ const imageData = [
   { src: img3, category: 'Wedding' },
   { src: img4, category: 'Wedding' },
   { src: img5, category: 'Wedding' },
-  { src: img6, category: 'Cocktail Events' },
-  { src: img7, category: 'Cocktail Events' },
-  { src: img8, category: 'Cocktail Events' },
-  { src: img9, category: 'Cocktail Events' },
-  { src: img10, category: 'Pre-Wedding' },
-  { src: img11, category: 'Birthday' },
-  { src: img12, category: 'Graduation' },
-  { src: img13, category: 'Birthday' },
-  { src: img14, category: 'Pre-Wedding' },
-  { src: img15, category: 'Reception' },
-  { src: img16, category: 'Graduation' },
-  { src: img17, category: 'Birthday' },
-  { src: img18, category: 'Half-Saree' },
-  { src: img19, category: 'Birthday' },
-  { src: img20, category: 'Graduation' },
-  { src: img21, category: 'Birthday' },
-  { src: img22, category: 'Half-Saree' },
-  { src: img23, category: 'Birthday' },
-  { src: img24, category: 'Graduation' },
+  { src: img6, category: 'Western' },
+  { src: img7, category: 'Western' },
+  { src: img8, category: 'Western' },
+  { src: img9, category: 'Western' },
+  { src: img28, category: 'Western' },
+  { src: img10, category: 'Traditional' },
+  { src: img11, category: 'Traditional' },
+  { src: img12, category: 'Traditional' },
+  { src: img14, category: 'Traditional' },
+  { src: img15, category: 'Traditional' },
+  { src: img16, category: 'Traditional' },
+  { src: img17, category: 'Traditional' },
+  { src: img18, category: 'Traditional' },
+  { src: img19, category: 'Traditional' },
+  { src: img20, category: 'Traditional' },
+  { src: img21, category: 'Traditional' },
+  { src: img22, category: 'Traditional' },
+  { src: img23, category: 'Traditional' },
+  { src: img24, category: 'Traditional' },
+  { src: img25, category: 'Traditional' },
+  { src: img26, category: 'Traditional' },
+  { src: img27, category: 'Traditional' },
 ];
 
-const categories = ['All', 'Wedding', 'Pre-Wedding', 'Half-Saree', 'Cocktail Events', 'Birthday'];
+const categories = ['Wedding', 'Traditional', 'Western', 'Milestones'];
 
 function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('Wedding');
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const filteredImages =

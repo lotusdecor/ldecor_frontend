@@ -65,11 +65,14 @@
 
 /* Masonry Grid */
 .masonry-grid {
-  column-count: 3;
-  column-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
+
 
 .masonry-item {
   position: relative;
