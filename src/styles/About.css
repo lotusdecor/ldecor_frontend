@@ -145,6 +145,16 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .founder-card {
+    flex-direction: column;
+  }
+
+  /* For the second founder-card, put the image on top */
+  .founders-section .founder-card:nth-child(2) {
+    flex-direction: column-reverse;
+  }
+}
+@media (max-width: 768px) {
   .about-hero-overlay {
     padding: 2rem;
     justify-content: center;
