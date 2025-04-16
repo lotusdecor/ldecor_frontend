@@ -26,7 +26,7 @@ function Navbar() {
         </div>
 
         <ul className="navbar-links desktop">
-          {['Home', 'About', 'Events', 'Gallery', 'Contact'].map((item, i) => (
+          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item, i) => (
             <li key={i}>
               <Link to={`/${item.toLowerCase()}`}>{item}</Link>
             </li>
@@ -41,7 +41,7 @@ function Navbar() {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <ul>
-          {['Home', 'About', 'Events', 'Gallery', 'Contact'].map((item, i) => (
+          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item, i) => (
             <li key={i} onClick={toggleMenu}>
               <Link to={`/${item.toLowerCase()}`}>{item}</Link>
             </li>
