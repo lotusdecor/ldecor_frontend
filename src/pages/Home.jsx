@@ -84,21 +84,21 @@ function Home() {
       <section className="our-promise" data-aos="fade-up">
         <h2 data-aos="zoom-in">Why Us?</h2>
         <p data-aos="fade-down">
-          At <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Lotus Décor & Events</span>, we believe every celebration is a reflection of your unique story — and we bring that vision to life with unmatched creativity, precision, and elegance.
-          Unlike one-size-fits-all decor services, we specialize in fully customized setups tailored to your style, budget, and dreams. 
-          From grand traditional gatherings to chic modern affairs, we offer bespoke decor for all occasions and all ages.
+        At <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Lotus Décor & Events</span>, we believe every celebration is a reflection of your unique story — and we bring that vision to life with unmatched creativity, precision, and elegance. 
+        Unlike one-size-fits-all décor services, we specialize in fully <span style={{ fontSize: '22px', fontWeight: 'bold' }}>customized </span>setups tailored to your <span style={{ fontSize: '22px', fontWeight: 'bold' }}>style, budget, and dreams</span>. 
+        From grand traditional gatherings to chic modern affairs, we offer bespoke décor for all occasions and all ages.
         </p>
         <p data-aos="fade-right">
-          What truly sets us apart? We are proud to be the only décor company in Dallas to blend the timeless beauty of <span style={{ fontSize: '22px', fontWeight: 'bold' }}>sola wood</span> flowers with fresh florals — combining elegance with sustainability in every detail.
-          As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>full-time event planners</span>, we go beyond design—we walk with you through every stage of your event, offering hands-on guidance and unwavering support to ensure a seamless, stress-free experience. 
-          Our role as organizers is to elevate your vision, infuse it with creativity, and execute every detail with elegance and precision.
+        What truly sets us apart? We are proud to be the only décor company in <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Dallas</span> to blend the timeless beauty of <span style={{ fontSize: '22px', fontWeight: 'bold' }}>sola wood flowers with fresh florals</span> — 
+        creating elegant, sustainable designs that are as unique as your celebration.
         </p>
         <p data-aos="fade-up">
-          We deeply value our clients’ voices and believe that <span style={{ fontSize: '22px', fontWeight: 'bold' }}>genuine feedback is the key to growth</span>. Every suggestion, compliment, and critique helps us refine our craft, elevate our services, and continue delivering unforgettable experiences.
-          With a personalized approach and an eye for excellence, we meticulously craft every element to exceed expectations — leaving you and your guests with lasting memories and a celebration that speaks volumes.
+        As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>full-time event planners</span>, we’re with you from start to finish — guiding you through each step, handling the details, and ensuring everything runs smoothly. 
+        Our goal is to bring your vision to life while making the planning process easy and stress-free.
         </p>
-        <p data-aos="zoom-in" style={{ fontSize: '25px', fontWeight: 'bold' }}>
-          Let us turn your vision into a celebration of elegance, beauty, and meaning.
+        <p data-aos="zoom-in" style={{ fontSize: '20px'}}>
+        We value your feedback and see it as an opportunity to grow. Every idea, suggestion, and compliment helps us improve and deliver even better experiences. 
+        With a <span style={{ fontSize: '22px', fontWeight: 'bold' }}>personalized touch and strong attention to detail</span>, we create meaningful celebrations that leave a lasting impression.
         </p>
       </section>
 
