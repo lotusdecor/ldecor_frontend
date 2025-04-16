@@ -17,14 +17,11 @@ function About() {
 
       {/* Description */}
       <section className="about-description" data-aos="fade-up">
-        <p data-aos="fade-down" style={{ fontSize: '22px' }}>
+        <p data-aos="fade-down" style={{ fontSize: '22px', fontStyle: 'italic' }}>
           Divine aesthetics and timeless elegance — curated in every style.
         </p>
-        <p data-aos="fade-right" style={{ fontSize: '22px' }}>
+        <p data-aos="fade-up" style={{ fontSize: '22px', fontStyle: 'italic'  }}>
           By women, for women, and of women — crafting elite celebrations, flawlessly styled to perfection.
-        </p>
-        <p data-aos="fade-up" style={{ fontSize: '22px' }}>
-          Your special moments deserve nothing less than perfection. Let’s craft memories that shine forever.
         </p>
       </section>
 
