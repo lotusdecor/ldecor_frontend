@@ -6,11 +6,11 @@ import {
   FaChevronRight,
 } from 'react-icons/fa';
 
-import img1 from '../assets/gallery/img1.jpeg';
-import img2 from '../assets/gallery/img2.jpeg';
-import img3 from '../assets/gallery/img3.jpeg';
-import img4 from '../assets/gallery/img4.jpeg';
-import img5 from '../assets/gallery/img5.jpeg';
+import img1 from '../assets/gallery/wedding1.jpg';
+import img2 from '../assets/gallery/wedding2.jpg';
+import img3 from '../assets/gallery/wedding3.jpg';
+import img4 from '../assets/gallery/wedding4.jpg';
+import img5 from '../assets/gallery/wedding5.jpg';
 import img6 from '../assets/gallery/img6.jpeg';
 import img7 from '../assets/gallery/img7.jpeg';
 import img8 from '../assets/gallery/img8.jpeg';
@@ -34,26 +34,26 @@ import img24 from '../assets/gallery/img24.jpeg';
 
 const imageData = [
   { src: img1, category: 'Wedding' },
-  { src: img2, category: 'Pre-Wedding' },
-  { src: img3, category: 'Birthday' },
-  { src: img4, category: 'Graduation' },
+  { src: img2, category: 'Wedding' },
+  { src: img3, category: 'Wedding' },
+  { src: img4, category: 'Wedding' },
   { src: img5, category: 'Wedding' },
   { src: img6, category: 'Pre-Wedding' },
   { src: img7, category: 'Birthday' },
   { src: img8, category: 'Graduation' },
-  { src: img9, category: 'Wedding' },
+  { src: img9, category: 'Birthday' },
   { src: img10, category: 'Pre-Wedding' },
   { src: img11, category: 'Birthday' },
   { src: img12, category: 'Graduation' },
-  { src: img13, category: 'Wedding' },
+  { src: img13, category: 'Birthday' },
   { src: img14, category: 'Pre-Wedding' },
   { src: img15, category: 'Reception' },
   { src: img16, category: 'Graduation' },
-  { src: img17, category: 'Wedding' },
+  { src: img17, category: 'Birthday' },
   { src: img18, category: 'Half-Saree' },
   { src: img19, category: 'Birthday' },
   { src: img20, category: 'Graduation' },
-  { src: img21, category: 'Wedding' },
+  { src: img21, category: 'Birthday' },
   { src: img22, category: 'Half-Saree' },
   { src: img23, category: 'Birthday' },
   { src: img24, category: 'Graduation' },

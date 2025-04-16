@@ -1,5 +1,6 @@
-body {
-  overflow-x: hidden; /* Essential for edge bleed */
+:root {
+  --gold: #d4af37;
+  --dark-blue: #1b1f3b;
 }
 
 .navbar {
@@ -24,22 +25,21 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
+/* Logo */
 .navbar-logo {
   display: flex;
   align-items: center;
 }
-
 .navbar-logo a {
   display: flex;
 }
-
 .logo-img {
-  height: 80px; /* Increased size */
+  height: 80px;
   width: auto;
   object-fit: contain;
 }
 
-/* Links Container */
+/* Desktop Links */
 .navbar-links {
   list-style: none;
   display: flex;
@@ -61,14 +61,14 @@ body {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 1000;
-  color:  #d4af37;
+  color: var(--gold);
   padding-bottom: 4px;
   position: relative;
   transition: color 0.3s ease;
 }
 
 .navbar.scrolled .navbar-links li a {
-  color: #1b1f3b;
+  color: var(--dark-blue);
 }
 
 .navbar-links li a::after {
@@ -78,45 +78,47 @@ body {
   bottom: 0;
   width: 0%;
   height: 2px;
-  background: #d4af37;
+  background: var(--gold);
   transition: width 0.3s ease;
 }
 
 .navbar-links li a:hover::after {
   width: 100%;
 }
-
 .navbar-links li a:hover {
-  color: #d4af37;
+  color: var(--gold);
 }
 
-/* Hamburger */
+/* Hamburger Menu Icon */
 .menu-icon {
   display: none;
   z-index: 1001;
-  color: #1b1f3b;
+  color: var(--gold);
   cursor: pointer;
   margin-left: 1.5rem;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* Fix for icon getting cut off */
-@media (max-width: 992px) {
-  .navbar {
-    padding: 1rem 1.5rem;
-  }
+/* Scrolled state icon color (optional) */
+.navbar.scrolled .menu-icon {
+  color: var(--dark-blue);
+}
 
+/* Mobile Menu */
+@media (max-width: 992px) {
   .navbar-links.desktop {
     display: none;
   }
 
   .menu-icon {
     display: block;
-    position: absolute;
-    right: 2rem;
   }
 }
 
-/* Mobile Menu */
+/* Mobile Menu Panel */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -146,22 +148,22 @@ body {
 
 .mobile-menu ul li a {
   font-size: 1.8rem;
-  color: #1b1f3b;
+  color: var(--dark-blue);
   font-family: 'Playfair Display', serif;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .mobile-menu ul li a:hover {
-  color: #d4af37;
+  color: var(--gold);
 }
 
-/* Back to Top */
+/* Back to Top Button */
 .back-to-top {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #d4af37;
+  background: var(--gold);
   color: white;
   border: none;
   border-radius: 50%;

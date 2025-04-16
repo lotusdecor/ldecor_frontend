@@ -23,3 +23,9 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+.navbar {
+  z-index: 999 !important;
+}
+.menu-icon {
+  z-index: 1001 !important;
+}
