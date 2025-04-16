@@ -1,6 +1,6 @@
 import '../styles/Services.css';
 import { Link } from 'react-router-dom';
-import img1 from '../assets/services/wedding2.jpg';
+import img1 from '../assets/services/wedding.jpeg';
 import img2 from '../assets/services/img2.jpeg';
 import img3 from '../assets/services/img3.jpeg';
 import img4 from '../assets/services/img4.jpeg';
