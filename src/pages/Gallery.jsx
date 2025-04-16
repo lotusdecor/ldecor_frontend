@@ -11,10 +11,10 @@ import img2 from '../assets/gallery/wedding2.jpg';
 import img3 from '../assets/gallery/wedding3.jpg';
 import img4 from '../assets/gallery/wedding4.jpg';
 import img5 from '../assets/gallery/wedding5.jpg';
-import img6 from '../assets/gallery/img6.jpeg';
-import img7 from '../assets/gallery/img7.jpeg';
-import img8 from '../assets/gallery/img8.jpeg';
-import img9 from '../assets/gallery/img9.jpeg';
+import img6 from '../assets/gallery/cocktail1.jpg';
+import img7 from '../assets/gallery/cocktail2.jpg';
+import img8 from '../assets/gallery/cocktail3.jpg';
+import img9 from '../assets/gallery/cocktail4.jpg';
 import img10 from '../assets/gallery/img10.jpeg';
 import img11 from '../assets/gallery/img11.jpeg';
 import img12 from '../assets/gallery/img12.jpeg';
@@ -38,10 +38,10 @@ const imageData = [
   { src: img3, category: 'Wedding' },
   { src: img4, category: 'Wedding' },
   { src: img5, category: 'Wedding' },
-  { src: img6, category: 'Pre-Wedding' },
-  { src: img7, category: 'Birthday' },
-  { src: img8, category: 'Graduation' },
-  { src: img9, category: 'Birthday' },
+  { src: img6, category: 'Cocktail Events' },
+  { src: img7, category: 'Cocktail Events' },
+  { src: img8, category: 'Cocktail Events' },
+  { src: img9, category: 'Cocktail Events' },
   { src: img10, category: 'Pre-Wedding' },
   { src: img11, category: 'Birthday' },
   { src: img12, category: 'Graduation' },
@@ -59,7 +59,7 @@ const imageData = [
   { src: img24, category: 'Graduation' },
 ];
 
-const categories = ['All', 'Wedding', 'Pre-Wedding', 'Half-Saree', 'Birthday', 'Cocktail Events'];
+const categories = ['All', 'Wedding', 'Pre-Wedding', 'Half-Saree', 'Cocktail Events', 'Birthday'];
 
 function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All');
