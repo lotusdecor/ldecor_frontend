@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useEffect, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import logo from '../assets/lotus_logo2.png'; // Adjust the path if needed
+import logo from '../assets/lotus_logo3.png'; // Adjust the path if needed
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
