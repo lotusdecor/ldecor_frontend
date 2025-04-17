@@ -255,7 +255,7 @@ body {
 }
 
 .testimonial-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 .testimonial-img-container {
@@ -273,10 +273,10 @@ body {
 .testimonial-overlay {
   position: absolute;
   bottom: 0;
-  width: 85%;
+  width: 87%;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding: 1.5rem;
+  padding: 1.2rem;
   transform: translateY(100%);
   transition: transform 0.4s ease;
   overflow-y: auto;
