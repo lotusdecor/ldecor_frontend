@@ -33,6 +33,8 @@ import img24 from '../assets/gallery/house6.jpg';
 import img25 from '../assets/gallery/house7.jpg';
 import img26 from '../assets/gallery/house8.jpg';
 import img27 from '../assets/gallery/house9.jpg';
+import img29 from '../assets/gallery/milestone1.jpg';
+import img30 from '../assets/gallery/milestone2.jpeg';
 
 const imageData = [
   { src: img1, category: 'Wedding' },
@@ -62,6 +64,8 @@ const imageData = [
   { src: img25, category: 'Traditional' },
   { src: img26, category: 'Traditional' },
   { src: img27, category: 'Traditional' },
+  { src: img29, category: 'Milestones' },
+  { src: img30, category: 'Milestones' },
 ];
 
 const categories = ['Wedding', 'Traditional', 'Western', 'Milestones'];

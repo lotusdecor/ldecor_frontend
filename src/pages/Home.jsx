@@ -2,9 +2,15 @@ import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import heroImg from "../assets/home_bg_hd.png";
-import client1 from "../assets/testimonials/client1.jpg";
-import client2 from "../assets/testimonials/client2.jpg";
-import client3 from "../assets/testimonials/client3.jpg";
+import client1 from "../assets/testimonials/client1.jpeg";
+import client2 from "../assets/testimonials/client2.jpeg";
+import client3 from "../assets/testimonials/client3.jpeg";
+import client4 from "../assets/testimonials/client4.jpeg";
+import client5 from "../assets/testimonials/client5.jpeg";
+import client6 from "../assets/testimonials/client6.jpeg";
+import client7 from "../assets/testimonials/client7.jpeg";
+import client8 from "../assets/testimonials/client8.jpeg";
+import client9 from "../assets/testimonials/client9.jpeg";
 
 function Home() {
   const texts = [
@@ -23,14 +29,44 @@ function Home() {
       img: client1,
     },
     {
+      name: "Anjali Mehra",
+      quote: "Lotus Decors made our wedding magical. The team was detail-oriented, warm, and incredibly creative!",
+      img: client2,
+    },
+    {
       name: "Ravi Patel",
       quote: "From the flowers to the lighting, everything was breathtaking. Our guests still talk about it!",
-      img: client2,
+      img: client3,
     },
     {
       name: "Priya Sharma",
       quote: "They captured our style perfectly and brought elegance to every inch of our event.",
-      img: client3,
+      img: client4,
+    },
+    {
+      name: "Priya Sharma",
+      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      img: client5,
+    },
+    {
+      name: "Priya Sharma",
+      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      img: client6,
+    },
+    {
+      name: "Priya Sharma",
+      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      img: client7,
+    },
+    {
+      name: "Priya Sharma",
+      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      img: client8,
+    },
+    {
+      name: "Rebecca & Sandeep",
+      quote: "It was a wonderful wedding journey with Thoranam Decors. Hiring this team was absolutely one of the best decisions I made when we are planning wedding. Thank you so much Sneha for giving us memories for a lifetime! I would highly recommend you and the team Thoranam Decors for any occasion. 👏🏻👌🏻👍🏻 Thank you Sneha😊😊",
+      img: client9,
     },
   ];
 
@@ -86,7 +122,7 @@ function Home() {
         <p data-aos="fade-down">
         At <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Lotus Décor & Events</span>, we believe every celebration is a reflection of your unique story — and we bring that vision to life with unmatched creativity, precision, and elegance. 
         Unlike one-size-fits-all décor services, we specialize in fully <span style={{ fontSize: '22px', fontWeight: 'bold' }}>customized </span>setups tailored to your <span style={{ fontSize: '22px', fontWeight: 'bold' }}>style, budget, and dreams</span>. 
-        From grand traditional gatherings to chic modern affairs, we offer bespoke décor for all occasions and all ages.
+        From grand traditional gatherings to chic modern affairs, we offer bespoke décor for all occasions.
         </p>
         <p data-aos="fade-right">
         What truly sets us apart? We are proud to be the only décor company in <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Dallas</span> to blend the timeless beauty of <span style={{ fontSize: '22px', fontWeight: 'bold' }}>sola wood flowers with fresh florals</span> — 
