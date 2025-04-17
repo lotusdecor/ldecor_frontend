@@ -24,43 +24,44 @@ function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonialsData = [
     {
-      name: "Anjali Mehra",
-      quote: "Lotus Decors made our wedding magical. The team was detail-oriented, warm, and incredibly creative!",
+      name: "Mounika & Naga",
+      quote: [ "Sneha at Thoranam Decors made the stressful process of figuring out the decor and florals for the wedding much easier! She was so easy to work with and flexible to our needs! She was also very thorough in remembering what we discussed after every phone call and email. She definitely brought our vision to life with such ease and catered to our needs the whole time. She was also so generous to meet with us whenever we had to go through some urgent matters and help answer any questions! If we had to be more specific about the work she did, we were having weather challenges, she was extremely helpful, cooperative and flexible even if we had to move the venue in the last minute. Both, my husband and I loved our decoration and were very happy to see it all come together after months of planning!", 
+      " My dream theme wouldn't have come to life without her help. We also received many many compliments. We highly recommend Sneha at Thoranam Decors for any floral/decor needs, she is the best!"],
       img: client1,
     },
     {
-      name: "Anjali Mehra",
-      quote: "Lotus Decors made our wedding magical. The team was detail-oriented, warm, and incredibly creative!",
+      name: "Swapna & Sashidhar",
+      quote: "Sneha was a pleasure to work with. She listens and provides suggestions without being pushy. Thoranam decors have done a fabulous job decorating for the 3 events: Decor for each event was different and she made improvisations that made it more special. For one of the events we had a weather situation, she was flexible and accommodated the needed changes. I will not think twice about hiring her again.",
       img: client2,
     },
     {
-      name: "Ravi Patel",
-      quote: "From the flowers to the lighting, everything was breathtaking. Our guests still talk about it!",
+      name: "Sahithi & Teja",
+      quote: "Your team is easy to work with and gives perfect output. Awesome detailing and use of fresh flowers. Thank you for making our baby shower so special and memorable.",
       img: client3,
     },
     {
-      name: "Priya Sharma",
-      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      name: "Braden & Parimala",
+      quote: "The decor was absolutely stunning and made the evening of my engagement ceremony even more beautiful.Sneha was delighted to work with, she made sure to confirm even the smallest details with me and my mother to make sure the vision I had was brought to life. She was very cooperative and took care of the entire evening from set up to take down. The decor received so many compliments from our guests as gorgeous. We will definitely work with Sneha again.",
       img: client4,
     },
     {
-      name: "Priya Sharma",
-      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      name: "Swetha & Raja",
+      quote: "Sneha did a fabulous job at decorating the stage for our little princess saree event. This event was taken to the next level with her decorations. We received many compliments from the guests. She has spent so much time for us and has been very patient and innovative throughout the process. Her energy levels stayed the same from the start to the finish. She completely understands the clients needs and challenges her work every time. She did three different decorations for our three different events back to back without compromising on the quality even with time constraints. I very much look forward to working with her again for all my future events. Thank you Sneha.",
       img: client5,
     },
     {
-      name: "Priya Sharma",
-      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      name: "Radhika Komma",
+      quote: "We were absolutely thrilled with the stunning decorations you provided for our housewarming party! Your team's attention to detail and expertise in Indian decor truly transformed our space into a vibrant and festive atmosphere. Your decorations perfectly captured the essence of Indian culture and added a warm, welcoming touch to our new home. Our guests were amazed by the beautiful settings, and we received countless compliments. Thank you for your exceptional service, creativity, and professionalism. You exceeded our expectations! Thank you for your outstanding work! ",
       img: client6,
     },
     {
-      name: "Priya Sharma",
-      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      name: "Suchi & Saikrishna",
+      quote: "Thank you Thoranam Decors for the amazing decor for all our events! 🙌 to your patience and commitment.",
       img: client7,
     },
     {
-      name: "Priya Sharma",
-      quote: "They captured our style perfectly and brought elegance to every inch of our event.",
+      name: "Abhigna",
+      quote: "Thank you so much for the incredible work you put into the decor for my son’s cradle ceremony. I received countless compliments on how beautiful everything looked ❤︎. Kudos to the team.",
       img: client8,
     },
     {
