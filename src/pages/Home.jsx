@@ -84,13 +84,7 @@ function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (!isMobile) return;
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonialsData.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isMobile, testimonialsData.length]);
+
 
   const handlePrev = () => {
     setActiveTestimonial((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
@@ -145,6 +139,7 @@ function Home() {
 
         {isMobile ? (
           <div className="testimonial-mobile-container">
+            
             <div className="testimonial-card">
               <div className="testimonial-img-container">
                 <img
@@ -161,15 +156,6 @@ function Home() {
             <div className="testimonial-nav">
               <button onClick={handlePrev}>&larr;</button>
               <button onClick={handleNext}>&rarr;</button>
-            </div>
-            <div className="testimonial-dots">
-              {testimonialsData.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`dot ${idx === activeTestimonial ? 'active' : ''}`}
-                  onClick={() => setActiveTestimonial(idx)}
-                />
-              ))}
             </div>
           </div>
         ) : (
