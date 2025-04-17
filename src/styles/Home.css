@@ -226,7 +226,7 @@ body {
   display: flex;
   width: fit-content;
   gap: 2rem;
-  animation: scrollLoop 40s linear infinite;
+  animation: scrollLoop 60s linear infinite;
 }
 
 @keyframes scrollLoop {
@@ -234,7 +234,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-40%);
   }
 }
 
