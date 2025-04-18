@@ -189,25 +189,53 @@
 }
 
 @media (max-width: 768px) {
-  .service-card {
-    flex-direction: column;
-  }
+  .service-card,
   .service-card.reverse {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
+
   .service-image {
-    max-width: 100%;
+    width: 90%;
+    max-width: 300px;
+    height: auto;
   }
+
+  .service-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
   .service-image.framed::before {
     display: none;
   }
+
   .service-image:hover {
     transform: none;
   }
+
   .service-image:hover img {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
+
   .service-btn:hover {
     transform: none;
+  }
+
+  .service-text {
+    padding: 1rem 0;
+  }
+
+  .service-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .service-text p {
+    font-size: 1rem;
   }
 }

@@ -16,7 +16,7 @@
   text-align: center;
   font-size: 3rem;
   color: #d4af37;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem 0 4rem;
   font-weight: 600;
   position: relative;
   padding-bottom: 1.5rem;
@@ -183,6 +183,8 @@
 @media (max-width: 480px) {
   .contact-title {
     font-size: 2rem;
+    margin-top: 6rem; 
+    margin-bottom: 3rem;
   }
 
   .contact-card h3,
