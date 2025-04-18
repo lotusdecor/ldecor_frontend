@@ -36,16 +36,15 @@ function About() {
             <p className="tagline" style={{ fontSize: '22px', fontWeight: 'bold' }}>Founder and Creative Head</p>
             <p>
             Born and raised in India, tradition has always been at the core of who I am. When I moved to the U.S., I brought that love for culture with me—carrying it not just in memories, but in the way I celebrate life’s special moments. 
-            Blending the vibrant beauty of Indian traditions with the clean elegance of modern design felt natural, and that passion is what inspired the creation of Lotus Events & Decor.
+            Blending the vibrant beauty of Indian traditions with the clean elegance of modern design felt natural, and that passion is what inspired the creation of Lotus Decor & Events.
             </p>
             <p>
-            With two daughters and a busy life, I’ve worn many hats—mother, entrepreneur, and creative thinker and a problem solver. But at my core, I love creating joy for others. 
-            For me, event design is more than just making things look beautiful; it’s about sharing stories, honoring culture, and making people feel special.
+            As a mother of two and a woman who wears many hats—entrepreneur, creative thinker, and problem solver—I've found my true passion in bringing joy to others. 
+            For me, event design goes beyond aesthetics; it's about telling stories, honoring traditions, and creating meaningful moments that make people feel truly special.
             </p>
             <p>
-            What started as a dream has grown into a business built on heart, honesty, and care. I bring that same passion to every event, making each one special—no matter the size or budget.
-            Lotus is more than just a business to me—it reflects my love for family, culture, beauty, and connection. 
-            Bringing people together through meaningful experiences is a blessing I’m grateful for every day.
+            What began as a dream has blossomed into a business rooted in heart, honesty, and genuine care. I bring that same passion to every event—no matter the size or budget—ensuring each one feels truly special. 
+            Lotus is more than just a business; it's a reflection of my love for family, culture, beauty, and meaningful connection. Creating spaces that bring people together is a gift I cherish every single day.
             </p>
           </div>
         </div>
