@@ -36,7 +36,7 @@ function About() {
             <p className="tagline" style={{ fontSize: '22px', fontWeight: 'bold' }}>Founder and Creative Head</p>
             <p>
             Born and raised in India, tradition has always been at the core of who I am. When I moved to the U.S., I brought that love for culture with me—carrying it not just in memories, but in the way I celebrate life’s special moments. 
-            Blending the vibrant beauty of Indian traditions with the clean elegance of modern design felt natural, and that passion is what inspired the creation of Lotus Decor & Events.
+            Blending the vibrant beauty of Indian traditions with the clean elegance of modern design felt natural, and that passion is what inspired the creation of Lotus Decor and Events.
             </p>
             <p>
             As a mother of two and a woman who wears many hats—entrepreneur, creative thinker, and problem solver—I've found my true passion in bringing joy to others. 

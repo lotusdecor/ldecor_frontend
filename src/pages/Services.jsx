@@ -7,7 +7,7 @@ import img3 from '../assets/services/organizing.jpeg';
 const services = [
   {
     title: 'DESIGN AND DECOR',
-    description: 'At Lotus Decor & Events, our Design & Decor services are where your vision meets our artistry. From elegant mandaps and bespoke backdrops to intricate tablescapes, every detail is thoughtfully curated to reflect your story, your style, and the essence of your celebration.',
+    description: 'At Lotus Decor and Events, our Design and Decor services are where your vision meets our artistry. From elegant mandaps and bespoke backdrops to intricate tablescapes, every detail is thoughtfully curated to reflect your story, your style, and the essence of your celebration.',
     image: img1,
   },
   {
