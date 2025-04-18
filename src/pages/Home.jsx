@@ -124,7 +124,7 @@ function Home() {
         creating elegant, sustainable designs that are as unique as your celebration.
         </p>
         <p data-aos="fade-up">
-        As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>full-time event planners</span>, we’re with you from start to finish — guiding you through each step, handling the details, and ensuring everything runs smoothly. 
+        As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>full-time event planners and organizers</span>, we’re with you from start to finish — guiding you through each step, handling the details, and ensuring everything runs smoothly. 
         Our goal is to bring your vision to life while making the planning process easy and stress-free.
         </p>
         <p data-aos="zoom-in" style={{ fontSize: '20px'}}>
