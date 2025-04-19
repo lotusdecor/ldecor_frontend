@@ -302,6 +302,29 @@ body {
   text-overflow: ellipsis;
 }
 
+.lotus-title-mobile {
+  display: none;
+
+}
+
+.lotus-title-desktop {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .lotus-title-mobile {
+    display: inline;
+  }
+
+  .lotus-title-desktop {
+    display: none;
+  }
+  .line-gap {
+    display: inline-block;
+    margin-top: 0.8rem;   
+  }
+}
+
 /* ======================== Mobile Responsive ======================== */
 @media (max-width: 768px) {
   .navbar-toggle-icon,
@@ -321,11 +344,11 @@ body {
   }
 
   .hero-content p.luxury-tagline {
-    font-size: 1.9rem;
+    font-size: 2.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #edb613;
+    color: #fcb604;
     background: none;
   }
 

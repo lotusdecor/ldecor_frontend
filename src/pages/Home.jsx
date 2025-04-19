@@ -101,9 +101,10 @@ function Home() {
       <section className="hero">
         <img src={heroImg} alt="Luxury Wedding Decor" className="hero-img kenburns" />
         <div className="hero-content" data-aos="fade-up">
-          <p className="luxury-tagline">
-            Lotus Decor and Events
-          </p>
+        <p className="luxury-tagline">
+          <span className="lotus-title-desktop">Lotus Decor and Events</span>
+          <span className="lotus-title-mobile" >Lotus<br /> <span className="line-gap">Decor and Events</span></span>
+        </p>
           <h1 className={`fade-text ${fade ? "fade-in" : "fade-out"}`}>
             {texts[textIndex]}
           </h1>
