@@ -461,7 +461,54 @@ body {
   .testimonial-dots .dot.active {
     background-color: var(--primary);
   }
+
+
+
+
+  /* swipe track */
+.testimonial-swipe-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;          /* smooth iOS momentum */
+  gap: 1.5rem;
+  padding: 0 1rem 1rem;
 }
+
+/* hides the ugly scrollbar in most browsers */
+.testimonial-swipe-track::-webkit-scrollbar { display: none; }
+.testimonial-swipe-track { scrollbar-width: none; }
+
+/* every card becomes a snap point */
+.testimonial-card {
+  scroll-snap-align: center;
+  flex: 0 0 85%;          /* show one card almost full‑width */
+  max-width: 320px;       /* prevents it from growing on tablets */
+  width: 100%;
+}
+
+/* optional: subtle hint dots (pure CSS) */
+.testimonial-dots {
+  margin-top: .8rem;
+  display: flex;
+  justify-content: center;
+  gap: .4rem;
+}
+
+.testimonial-dots .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background:#ccc;
+  transition: background .3s;
+}
+
+.testimonial-swipe-track:has(.testimonial-card:nth-child(1):is(:hover,:focus-visible,:target)) ~ .testimonial-dots .dot:nth-child(1),
+.testimonial-swipe-track:has(.testimonial-card:nth-child(2):is(:hover,:focus-visible,:target)) ~ .testimonial-dots .dot:nth-child(2)
+/* …repeat for other dots… */ {
+  background: var(--primary);
+}
+
+}
+
 
 .homeshine-btn {
   font-family: 'Cormorant Garamond', serif;

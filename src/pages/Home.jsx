@@ -139,28 +139,22 @@ function Home() {
         <h2 data-aos="zoom-in">What Our Clients Say</h2>
         <div className="divider" />
 
-        {isMobile ? (
-          <div className="testimonial-mobile-container">
-            
-            <div className="testimonial-card">
-              <div className="testimonial-img-container">
-                <img
-                  src={testimonialsData[activeTestimonial].img}
-                  alt={testimonialsData[activeTestimonial].name}
-                  className="testimonial-img"
-                />
-              </div>
-              <div className="testimonial-overlay">
-                <h3>{testimonialsData[activeTestimonial].name}</h3>
-                <p>{testimonialsData[activeTestimonial].quote}</p>
-              </div>
+          {isMobile ? (
+            /* —— NEW swipe layout —— */
+            <div className="testimonial-swipe-track">
+              {testimonialsData.map((item, idx) => (
+                <div className="testimonial-card" key={idx}>
+                  <div className="testimonial-img-container">
+                    <img src={item.img} alt={item.name} className="testimonial-img" />
+                  </div>
+                  <div className="testimonial-overlay">
+                    <h3>{item.name}</h3>
+                    <p>{item.quote}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="testimonial-nav">
-              <button onClick={handlePrev}>&larr;</button>
-              <button onClick={handleNext}>&rarr;</button>
-            </div>
-          </div>
-        ) : (
+          ) : (
           <div className="testimonial-wrapper">
             <div className="testimonial-scroller">
               {[...testimonialsData, ...testimonialsData].map((item, index) => (
