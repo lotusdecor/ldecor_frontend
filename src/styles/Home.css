@@ -372,12 +372,6 @@ body {
     display: none;
   }
 
-  .testimonial-mobile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .testimonial-card {
     width: 90%;
     margin: auto;
@@ -422,55 +416,12 @@ body {
     line-height: 1.5;
   }
 
-  .testimonial-nav {
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
-    gap: 1.5rem;
-  }
-
-  .testimonial-nav button {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: var(--primary);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-
-  .testimonial-nav button:hover {
-    transform: scale(1.2);
-  }
-
-  .testimonial-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .testimonial-dots .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-
-  .testimonial-dots .dot.active {
-    background-color: var(--primary);
-  }
-
-
-
-
   /* swipe track */
 .testimonial-swipe-track {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;          /* smooth iOS momentum */
+  -webkit-overflow-scrolling: touch;      
   gap: 1.5rem;
   padding: 0 1rem 1rem;
 }
