@@ -35,6 +35,29 @@ import img26 from '../assets/gallery/house8.jpg';
 import img27 from '../assets/gallery/house9.jpg';
 import img29 from '../assets/gallery/milestone1.jpg';
 import img30 from '../assets/gallery/milestone2.jpeg';
+import img31 from '../assets/gallery/client/wedding/1.jpeg';
+import img32 from '../assets/gallery/client/wedding/2.jpeg';
+import img33 from '../assets/gallery/client/wedding/3.jpeg';
+import img34 from '../assets/gallery/client/wedding/4.jpeg';
+import img35 from '../assets/gallery/client/traditional/1.jpeg';
+import img36 from '../assets/gallery/client/traditional/2.jpeg';
+import img37 from '../assets/gallery/client/traditional/3.jpeg';
+import img38 from '../assets/gallery/client/traditional/4.jpeg';
+import img39 from '../assets/gallery/client/traditional/5.jpeg';
+import img40 from '../assets/gallery/client/traditional/6.jpeg';
+import img41 from '../assets/gallery/client/traditional/7.jpeg';
+import img42 from '../assets/gallery/client/traditional/8.jpeg';
+import img43 from '../assets/gallery/client/traditional/9.jpeg';
+import img44 from '../assets/gallery/client/traditional/10.jpeg';
+import img45 from '../assets/gallery/client/western/1.jpeg';
+import img46 from '../assets/gallery/client/western/2.jpeg';
+import img47 from '../assets/gallery/client/western/3.jpeg';
+import img48 from '../assets/gallery/client/milestone/1.jpeg';
+import img49 from '../assets/gallery/client/milestone/2.jpeg';
+import img50 from '../assets/gallery/client/milestone/3.jpeg';
+import img51 from '../assets/gallery/client/milestone/4.jpeg';
+import img52 from '../assets/gallery/client/milestone/5.jpeg';
+
 
 const imageData = [
   { src: img1, category: 'Wedding' },
@@ -66,6 +89,28 @@ const imageData = [
   { src: img27, category: 'Traditional' },
   { src: img29, category: 'Milestones' },
   { src: img30, category: 'Milestones' },
+  { src: img31, category: 'Wedding' },
+  { src: img32, category: 'Wedding' },
+  { src: img33, category: 'Wedding' },
+  { src: img34, category: 'Wedding' },
+  { src: img35, category: 'Traditional' },
+  { src: img36, category: 'Traditional' },
+  { src: img37, category: 'Traditional' },
+  { src: img38, category: 'Traditional' },
+  { src: img39, category: 'Traditional' },
+  { src: img40, category: 'Traditional' },
+  { src: img41, category: 'Traditional' },
+  { src: img42, category: 'Traditional' },
+  { src: img43, category: 'Traditional' },
+  { src: img44, category: 'Traditional' },
+  { src: img45, category: 'Western' },
+  { src: img46, category: 'Western' },
+  { src: img47, category: 'Western' },
+  { src: img48, category: 'Milestones' },
+  { src: img49, category: 'Milestones' },
+  { src: img50, category: 'Milestones' },
+  { src: img51, category: 'Milestones' },
+  { src: img52, category: 'Milestones' },
 ];
 
 const categories = ['Wedding', 'Traditional', 'Western', 'Milestones'];
