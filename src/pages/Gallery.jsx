@@ -104,7 +104,7 @@ const imageData = [
   { src: img43, category: 'Traditional' },
   { src: img44, category: 'Traditional' },
   { src: img45, category: 'Western' },
-  { src: img46, category: 'Western' },
+  { src: img46, category: 'Traditional' },
   { src: img47, category: 'Western' },
   { src: img48, category: 'Milestones' },
   { src: img49, category: 'Milestones' },
