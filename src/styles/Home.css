@@ -345,11 +345,13 @@ body {
 
   .hero-content p.luxury-tagline {
     font-size: 2.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #ecba15;
-    background: none;
+    font-weight: 700;
+    color: #ebbc22; /* Elegant gold */
+    text-shadow: 
+      1px 1px 2px rgba(0, 0, 0, 0.3), /* soft dark edge */
+      0 0 8px rgba(239, 185, 7, 0.6); /* soft gold glow */
+    text-align: center;
+    white-space: normal;
   }
 
   .hero-content h1 {
