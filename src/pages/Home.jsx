@@ -118,7 +118,7 @@ function Home() {
         <p data-aos="fade-down">
         At <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Lotus Décor & Events</span>, we believe every celebration is a reflection of your unique story — and we bring that vision to life with unmatched creativity, precision, and elegance. 
         Unlike one-size-fits-all décor services, we specialize in fully <span style={{ fontSize: '22px', fontWeight: 'bold' }}>customized </span>setups tailored to your <span style={{ fontSize: '22px', fontWeight: 'bold' }}>style, budget, and dreams</span>. 
-        From grand traditional gatherings to chic modern affairs, we offer bespoke décor for all occasions.
+        From grand <i>traditional gatherings</i> to chic modern affairs, we offer bespoke décor for all occasions.
         </p>
         <p data-aos="fade-right">
         What truly sets us apart? We are proud to be the only décor company in <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Dallas</span> to blend the timeless beauty of <span style={{ fontSize: '22px', fontWeight: 'bold' }}>sola wood flowers with fresh florals</span> — 
