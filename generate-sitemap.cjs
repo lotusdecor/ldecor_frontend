@@ -10,7 +10,7 @@ if (!existsSync(publicDir)) {
 const sitemapPath = path.join(publicDir, 'sitemap.xml');
 console.log('Writing sitemap to:', sitemapPath);
 
-const sitemap = new SitemapStream({ hostname: 'https://yourdomain.com' });
+const sitemap = new SitemapStream({ hostname: 'https://lotusdecorandevents.com' });
 
 [
   '/',
