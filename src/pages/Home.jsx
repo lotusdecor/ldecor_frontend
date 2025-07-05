@@ -16,7 +16,7 @@ function Home() {
   const texts = [
     "Where Elegance Meets Emotion..",
     "Where Luxury Meets Love..",
-    "Where Your Dream Event Begins..",
+    "Where Your Dream Event Begins...",
   ];
 
   const [textIndex, setTextIndex] = useState(0);
