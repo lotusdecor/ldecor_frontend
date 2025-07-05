@@ -35,13 +35,13 @@ const ANIMATION_VARIANTS = {
 const SOCIAL_LINKS = [
   { icon: <FaFacebookF />, href: "https://www.facebook.com/ThoranamDecors/" },
   { icon: <FaInstagram />, href: "https://www.instagram.com/thoranamdecors/" },
-  { icon: <FaWhatsapp />, href: "#" }
+  { icon: <FaWhatsapp />, href: "https://wa.me/14843029331" }
 ];
 
 const CONTACT_INFO = [
   { icon: <FaPhoneAlt className="icon" />, text: "+1(484)302-9331 / +1(732)912-8810" },
   { icon: <FaEnvelope className="icon" />, text: "info@lotusdecorandevents.com" },
-  { icon: <FaSearchLocation className="icon" />, text: "14800 Quorum Dr, Suite # 269, Dallas, Tx 75254" }
+  { icon: <FaSearchLocation className="icon" />, text: "13650 TI Blvd, Suite 202, Dallas, 75243" }
 ];
 
 const Contact = memo(() => {
