@@ -8,7 +8,7 @@ function Footer() {
 
         <div className="footer-socials">
           <a href="https://www.instagram.com/thoranamdecors/" aria-label="Instagram"><FaInstagram /></a>
-          <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
+          <a href="https://wa.me/14843029331" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
           <a href="https://www.facebook.com/ThoranamDecors/" aria-label="Facebook"><FaFacebookF /></a>
         </div>
       </div>
