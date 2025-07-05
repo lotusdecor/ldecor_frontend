@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
+import SEO from '../components/SEO';
 import heroImg from "../assets/home_bg_hd.png";
 import client1 from "../assets/testimonials/client1.jpeg";
 import client2 from "../assets/testimonials/client2.jpeg";
@@ -16,7 +17,7 @@ function Home() {
   const texts = [
     "Where Elegance Meets Emotion..",
     "Where Luxury Meets Love..",
-    "Where Your Dream Event Begins...",
+    "Where Your Dream Event Begins..",
   ];
 
   const [textIndex, setTextIndex] = useState(0);
@@ -61,7 +62,7 @@ function Home() {
     },
     {
       name: "Abhigna",
-      quote: "Thank you so much for the incredible work you put into the decor for my son’s cradle ceremony. I received countless compliments on how beautiful everything looked ❤︎. Kudos to the team.",
+      quote: "Thank you so much for the incredible work you put into the decor for my son's cradle ceremony. I received countless compliments on how beautiful everything looked ❤︎. Kudos to the team.",
       img: client8,
     },
     {
@@ -96,8 +97,15 @@ function Home() {
   };
 
   return (
-    <div className="home-page">
-      {/* Hero Section */}
+    <>
+      <SEO 
+        title="Top Event Organizer Company in USA | Wedding Planners & Coordinators"
+        description="Plan your dream wedding with a top-rated wedding and event planner in USA. We offer complete wedding planning, decoration, and event management services."
+        keywords="wedding planner, event organizer, wedding coordinator, event management, wedding decoration, USA wedding planner, event planning services"
+        url="https://lotusdecorandevents.com"
+      />
+      <div className="home-page">
+        {/* Hero Section */}
       <section className="hero">
         <img src={heroImg} alt="Luxury Wedding Decor" className="hero-img kenburns" />
         <div className="hero-content" data-aos="fade-up">
@@ -125,12 +133,13 @@ function Home() {
         creating elegant, sustainable designs that are as unique as your celebration.
         </p>
         <p data-aos="fade-up">
-        As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>event managers, wedding planners and coordinators</span>, we’re with you from start to finish — guiding you through each step, handling the details, and ensuring everything runs smoothly. 
+        As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>event managers, wedding planners and coordinators</span>, we're with you from start to finish — guiding you through each step, handling the details, and ensuring everything runs smoothly. 
         Our goal is to bring your vision to life while making the planning process easy and stress-free.
         </p>
         <p data-aos="zoom-in" style={{ fontSize: '20px'}}>
         We value your feedback and see it as an opportunity to grow. Every idea, suggestion, and compliment helps us improve and deliver even better experiences. 
-        With a <span style={{ fontSize: '22px', fontWeight: 'bold' }}>personalized touch and strong attention to detail</span>, we create meaningful celebrations that leave a lasting impression.
+        With a <span style={{ fontSize: '22px', fontWeight: 'bold' }}>personalized touch and strong attention to detail</span>, we create meaningful celebrations that leave a lasting impression 
+        - true to the spirit of <b>complete weddings and events</b> handled by experienced <b>event organisers in USA</b>.
         </p>
       </section>
 
@@ -175,11 +184,12 @@ function Home() {
 
       {/* CTA */}
       <section className="cta-section" data-aos="zoom-in">
-        <h2>Let’s Make Your Dream Event Come True</h2>
+        <h2>Let's Make Your Dream Event Come True</h2>
         <Link to="/contact" className="homeshine-btn"> Book a Consultation </Link>
       </section>
     </div>
-  );
+  </>
+);
 }
 
 export default Home;

@@ -9,6 +9,7 @@ import {
   FaWhatsapp, 
   FaSearchLocation 
 } from 'react-icons/fa';
+import SEO from '../components/SEO';
 
 const ANIMATION_VARIANTS = {
   container: {
@@ -45,76 +46,84 @@ const CONTACT_INFO = [
 
 const Contact = memo(() => {
   return (
-    <motion.div 
-      className="contact-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
-      <motion.h2 
-        className="contact-title"
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
-      >
-        Get in Touch
-
-      </motion.h2>
-
+    <>
+      <SEO
+        title="Contact Us | Book Wedding & Event Services in USA Today."
+        description="Get in touch with our expert wedding planners for bookings, packages, and free consultation. We serve all major cities across the USA."
+        keywords="contact, wedding planner, event services, USA, booking, consultation, event packages"
+        url="https://lotusdecorandevents.com/contact"
+      />
       <motion.div 
-        className="contact-center-wrapper"
-        variants={ANIMATION_VARIANTS.container}
-        initial="hidden"
-        animate="visible"
+        className="contact-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
       >
-        <motion.div 
-          className="contact-card"
-          variants={ANIMATION_VARIANTS.item}
-          whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
+        <motion.h2 
+          className="contact-title"
+          initial={{ y: -40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
         >
-          <motion.h3>Contact Details</motion.h3>
-          <div className="contact-info">
-            {CONTACT_INFO.map((info, index) => (
-              <motion.p key={index} whileTap={{ scale: 0.98 }}>
-                {info.icon} {info.text}
-              </motion.p>
-            ))}
-          </div>
+          Get in Touch
 
-          <motion.div className="social-links" animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-            {SOCIAL_LINKS.map((link, index) => (
-              <motion.a 
-                key={index}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+        </motion.h2>
+
+        <motion.div 
+          className="contact-center-wrapper"
+          variants={ANIMATION_VARIANTS.container}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div 
+            className="contact-card"
+            variants={ANIMATION_VARIANTS.item}
+            whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
+          >
+            <motion.h3>Contact Details</motion.h3>
+            <div className="contact-info">
+              {CONTACT_INFO.map((info, index) => (
+                <motion.p key={index} whileTap={{ scale: 0.98 }}>
+                  {info.icon} {info.text}
+                </motion.p>
+              ))}
+            </div>
+
+            <motion.div className="social-links" animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+              {SOCIAL_LINKS.map((link, index) => (
+                <motion.a 
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {link.icon}
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <motion.div 
+            className="inquiry-button-card"
+            variants={ANIMATION_VARIANTS.item}
+            whileHover={{ scale: 1.01 }}
+          >
+            <div className="inquiry-btn-wrapper">
+              <a 
+                href="https://forms.gle/MBxMKypqBYaUJTn79" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="contactshine-btn inquiry-btn"
               >
-                {link.icon}
-              </motion.a>
-            ))}
+                Submit Your Inquiry Here
+              </a>
+            </div>
           </motion.div>
         </motion.div>
-
-        <motion.div 
-          className="inquiry-button-card"
-          variants={ANIMATION_VARIANTS.item}
-          whileHover={{ scale: 1.01 }}
-        >
-          <div className="inquiry-btn-wrapper">
-            <a 
-              href="https://forms.gle/MBxMKypqBYaUJTn79" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="contactshine-btn inquiry-btn"
-            >
-              Submit Your Inquiry Here
-            </a>
-          </div>
-        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 });
 

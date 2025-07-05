@@ -5,6 +5,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from 'react-icons/fa';
+import SEO from '../components/SEO';
 
 import img1 from '../assets/gallery/wedding1.jpg';
 import img2 from '../assets/gallery/wedding2.jpg';
@@ -133,60 +134,68 @@ function Gallery() {
   };
 
   return (
-    <div className="gallery-page">
-      <div className="gallery-header" data-aos="fade-up">
-        <h2>Our Signature Looks</h2>
-        <p>Moments captured with timeless elegance and curated charm.</p>
-      </div>
-
-      <div className="gallery-categories" data-aos="fade-up">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            className={`category-btn ${selectedCategory === cat ? 'active' : ''}`}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setSelectedIndex(null);
-            }}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      <div className="masonry-grid">
-        {filteredImages.map((img, i) => (
-          <div
-            className="masonry-item"
-            key={i}
-            data-aos="fade-up"
-            data-aos-delay={i * 50}
-          >
-            <img
-              src={img.src}
-              alt={`${img.category} ${i + 1}`}
-              loading="lazy"
-              onClick={() => setSelectedIndex(i)}
-            />
-          </div>
-        ))}
-      </div>
-
-      {selectedIndex !== null && (
-        <div className="lightbox" onClick={() => setSelectedIndex(null)}>
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <FaTimes className="lightbox-close" onClick={() => setSelectedIndex(null)} />
-            <FaChevronLeft className="lightbox-nav left" onClick={handlePrev} />
-            <img
-              src={filteredImages[selectedIndex].src}
-              alt="Preview"
-              className="lightbox-img"
-            />
-            <FaChevronRight className="lightbox-nav right" onClick={handleNext} />
-          </div>
+    <>
+      <SEO
+        title="Wedding Photo Gallery | Stunning Decor & Event Photography Showcase"
+        description="Browse our wedding and event photo gallery to see real wedding decorations, mandaps, stage setups, and client celebrations across the USA."
+        keywords="wedding gallery, event photography, wedding decor, mandap, stage setup, USA weddings, client celebrations"
+        url="https://lotusdecorandevents.com/gallery"
+      />
+      <div className="gallery-page">
+        <div className="gallery-header" data-aos="fade-up">
+          <h2>Our Signature Looks</h2>
+          <p>Moments captured with timeless elegance and curated charm.</p>
         </div>
-      )}
-    </div>
+
+        <div className="gallery-categories" data-aos="fade-up">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`category-btn ${selectedCategory === cat ? 'active' : ''}`}
+              onClick={() => {
+                setSelectedCategory(cat);
+                setSelectedIndex(null);
+              }}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="masonry-grid">
+          {filteredImages.map((img, i) => (
+            <div
+              className="masonry-item"
+              key={i}
+              data-aos="fade-up"
+              data-aos-delay={i * 50}
+            >
+              <img
+                src={img.src}
+                alt={`${img.category} ${i + 1}`}
+                loading="lazy"
+                onClick={() => setSelectedIndex(i)}
+              />
+            </div>
+          ))}
+        </div>
+
+        {selectedIndex !== null && (
+          <div className="lightbox" onClick={() => setSelectedIndex(null)}>
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <FaTimes className="lightbox-close" onClick={() => setSelectedIndex(null)} />
+              <FaChevronLeft className="lightbox-nav left" onClick={handlePrev} />
+              <img
+                src={filteredImages[selectedIndex].src}
+                alt="Preview"
+                className="lightbox-img"
+              />
+              <FaChevronRight className="lightbox-nav right" onClick={handleNext} />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -21,22 +22,24 @@ function App() {
   }, []);
   
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </main>
-      <Footer />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </HelmetProvider>
   );
 }
 
