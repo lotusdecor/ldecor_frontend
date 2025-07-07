@@ -8,10 +8,10 @@ function About() {
   return (
     <>
       <SEO
-        title="Wedding Planning & Event Management Services | Mandap, Catering, Decor"
-        description="Explore professional wedding planning services including mandap decoration, event catering, venue setup, and complete event management tailored to your tradition."
-        keywords="wedding planning, event management, mandap decoration, event catering, venue setup, traditional weddings, Indian wedding, USA"
-        url="https://lotusdecorandevents.com/about"
+        title="About Us | Trusted Wedding & Event Planners with Years of Experience"
+        description="Learn about our journey as one of India's leading wedding and event management companies, known for creative and culturally-rich celebrations."
+        keywords="about us, wedding planners, event management, India, creative events, cultural celebrations"
+        url="https://lotusdecorandevents.com/services"
       />
       <div className="about-page">
         {/* Hero Section */}
