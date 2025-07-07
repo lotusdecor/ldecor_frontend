@@ -52,7 +52,7 @@ function About() {
               </p>
               <p>
               What began as a dream has blossomed into a business rooted in heart, honesty, and genuine care. I bring that same passion to every event—no matter the size or budget—ensuring each one feels truly special. 
-              Lotus is more than just a business; it's a reflection of my love for family, culture, beauty, and meaningful connection. Creating spaces that bring people together is a gift I cherish every single day.
+              Lotus is more than just a business; it's a reflection of my love for family, culture, beauty, and meaningful connection. Creating spaces that bring people together is a gift I cherish every single day, whether for events and webinars or once-in-a-lifetime celebrations.
               </p>
             </div>
           </div>
