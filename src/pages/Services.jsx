@@ -13,7 +13,7 @@ const services = [
   },
   {
     title: 'EVENT PLANNERS',
-    description: 'As event planners, we are dedicated to bringing your dream event to life with precision and care. From the initial concept to flawless execution, we manage every detail, ensuring your event runs smoothly and exceeds expectations. Beginning with personalized consultations, we handle every aspect, allowing you to relax and enjoy while we ensure your guests leave with unforgettable memories. We bring expertise in event planning and execution that stands out in the event planning industry.',
+    description: 'As <a href="/contact" style="color: #d4af37; font-weight: bold; text-decoration: none;">event planners</a>, we are dedicated to bringing your dream event to life with precision and care. From the initial concept to flawless execution, we manage every detail, ensuring your event runs smoothly and exceeds expectations. Beginning with personalized consultations, we handle every aspect, allowing you to relax and enjoy while we ensure your guests leave with unforgettable memories. We bring expertise in event planning and execution that stands out in the event planning industry.',
     image: img2,
   },
   {
@@ -45,7 +45,11 @@ function Services() {
               </div>
               <div className="service-text" data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
                 <h2>{service.title}</h2>
-                <p>{service.description}</p>
+                {service.title === 'EVENT PLANNERS' ? (
+                  <p dangerouslySetInnerHTML={{ __html: service.description }} />
+                ) : (
+                  <p>{service.description}</p>
+                )}
               </div>
             </div>
           ))}

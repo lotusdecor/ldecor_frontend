@@ -130,7 +130,7 @@ function Home() {
         </p>
         <p data-aos="fade-right">
         What truly sets us apart? We are proud to be the only décor company in <span style={{ fontSize: '22px', fontWeight: 'bold' }}>Dallas</span> to blend the timeless beauty of <span style={{ fontSize: '22px', fontWeight: 'bold' }}>sola wood flowers with fresh florals</span> — 
-        creating elegant, sustainable designs that are as unique as your celebration.
+        creating elegant, sustainable designs that are as unique as your celebration. As an <Link to="/services" style={{ color: '#d4af37', fontWeight: 'bold', textDecoration: 'none' }}>event management company</Link>, we take pride in delivering artistry and professionalism in every detail.
         </p>
         <p data-aos="fade-up">
         As <span style={{ fontSize: '22px', fontWeight: 'bold' }}>event managers, wedding planners and coordinators</span>, we're with you from start to finish — guiding you through each step, handling the details, and ensuring everything runs smoothly. 
