@@ -5,6 +5,7 @@ import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import {
   FaCalendarAlt,
+  FaClock,
   FaMapMarkerAlt,
   FaTicketAlt,
   FaInstagram,
@@ -22,30 +23,32 @@ import {
   GiPumpkinLantern,
   GiCrown,
   GiMartini,
-  GiBat,
-  GiSpiderWeb,
-  GiSpiderAlt,
-  GiGhost,
-  GiWitchFlight,
   GiTombstone,
   GiCandleFlame,
 } from 'react-icons/gi';
 import poster from '../assets/events/halloween-poster.jpg';
 import logo from '../assets/logo_final.png';
+import { Bat, BatBurst, Cobweb, Crowd, Pumpkin, Spider } from '../components/HalloweenScene';
+import moonImg from '../assets/events/moon.webp';
+import sparkshootLogo from '../assets/events/sparkshoot-logo.webp';
 
 // Paste the Stripe Payment Link here (Stripe Dashboard → Payment Links → Create).
 // In the link's "After payment" settings, choose "Don't show confirmation page" and
 // redirect to https://lotusdecorandevents.com/halloween?ticket=success
 const TICKET_URL = '';
 const TICKET_PRICE = 30;
+const CTA_LABEL = `Get tickets for $${TICKET_PRICE}`;
 
 const EVENT = {
   name: 'Belly, Beats & Boo!',
   subtitle: 'An Adults-Only Halloween Affair',
   date: '2026-10-30',
-  // Used by the countdown. Update to the real start time (Dallas is UTC-05:00 in October).
-  startsAt: '2026-10-30T19:00:00-05:00',
   displayDate: 'October 30',
+  // Fill these in when confirmed. Until then the page shows "Venue announced soon"
+  // and a days-only countdown instead of a guessed start time.
+  displayTime: '', // e.g. '8 PM – 1 AM'
+  startsAt: '', // e.g. '2026-10-30T20:00:00-05:00' (Dallas is UTC-05:00 in October)
+  venue: '', // e.g. 'The Venue Name, 123 Main St'
   city: 'Dallas, TX',
   contactName: 'Priyanka',
   contactPhone: '+1 (945) 338-9171',
@@ -53,16 +56,29 @@ const EVENT = {
   instagram: 'lotusdecorandevents',
 };
 
-const FEATURES = [
-  { icon: <GiHeadphones />, title: 'Live DJ', text: 'Dance all night to high-energy beats and Halloween vibes.', color: 'cyan' },
-  { icon: <GiFlowerTwirl />, title: 'Belly Dancers', text: 'Experience an exciting live performance that brings the party to life.', color: 'pink' },
-  { icon: <GiMicrophone />, title: 'Entertainment by MC', text: 'Our MC keeps the energy going and brings the crowd together throughout the evening.', color: 'orange' },
-  { icon: <GiCardRandom />, title: 'Tarot Readings Included', text: 'Discover what the cards have in store for you with a complimentary tarot reading included with your event experience.', color: 'purple' },
-  { icon: <GiIceCreamCone />, title: 'Tipsy Scoop', text: 'Indulge in liquor-infused ice cream creations from Tipsy Scoop.', color: 'cyan' },
-  { icon: <GiPumpkinLantern />, title: 'Halloween Costume Show & Contest', text: 'Come dressed to impress and show off your Halloween look for a chance to be part of the fun.', color: 'pink' },
-  { icon: <GiCrown />, title: 'Influencer Meet & Greet', text: 'Get up close and personal with a featured influencer during the event.', color: 'cyan' },
-  { icon: <GiMartini />, title: 'Food & Drinks', text: 'Food and drinks will be available for purchase throughout the evening.', color: 'orange' },
+// "Included" cards are what the ticket price covers; "extras" are also at the party.
+const INCLUDED = [
+  { icon: <GiHeadphones />, title: 'Live DJ', text: 'Dance all night to high-energy beats and Halloween vibes.' },
+  { icon: <GiFlowerTwirl />, title: 'Belly dancers', text: 'A live belly dance performance that brings the party to life.' },
+  { icon: <GiCardRandom />, title: 'Tarot reading', text: 'A complimentary tarot reading to see what the cards have in store for you.' },
+  { icon: <GiPumpkinLantern />, title: 'Costume show & contest', text: 'Come dressed to impress and show off your Halloween look on stage.' },
+  { icon: <GiMicrophone />, title: 'Entertainment by MC', text: 'Our MC keeps the energy up and the crowd together all evening.' },
+  { icon: <GiCrown />, title: 'Influencer meet & greet', text: 'Get up close and personal with a featured influencer.' },
 ];
+const EXTRAS = [
+  { icon: <GiIceCreamCone />, title: 'Tipsy Scoop', text: 'Liquor-infused ice cream creations from Tipsy Scoop.' },
+  { icon: <GiMartini />, title: 'Food & drinks', text: 'Food and drinks available to buy throughout the evening.' },
+];
+
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Browser storage can be blocked (private mode, site-data settings); never let that break the page.
+function readStore(storage, key) {
+  try { return window[storage].getItem(key); } catch { return null; }
+}
+function writeStore(storage, key, value) {
+  try { window[storage].setItem(key, value); } catch { /* ignore */ }
+}
 
 // Rising embers — generated once so positions stay stable across re-renders.
 const EMBER_COLORS = ['#ff3fbf', '#b44cff', '#ffa630', '#39d5ff'];
@@ -79,12 +95,12 @@ const eventSchema = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: `${EVENT.name} ${EVENT.subtitle}`,
-  startDate: EVENT.date,
+  startDate: EVENT.startsAt || EVENT.date,
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
-    name: 'Dallas, TX',
+    name: EVENT.venue || EVENT.city,
     address: { '@type': 'PostalAddress', addressLocality: 'Dallas', addressRegion: 'TX', addressCountry: 'US' },
   },
   image: [`https://lotusdecorandevents.com${poster}`],
@@ -100,27 +116,72 @@ const eventSchema = {
   organizer: { '@type': 'Organization', name: 'Lotus Decor and Events', url: 'https://lotusdecorandevents.com' },
 };
 
-function TicketButton({ label, large = false }) {
+let burstSeq = 0;
+function makeBurst() {
+  return Array.from({ length: 9 }, (_, i) => {
+    const angle = (-165 + (150 / 8) * i + (Math.random() * 14 - 7)) * (Math.PI / 180);
+    const dist = 130 + Math.random() * 110;
+    return {
+      id: `${burstSeq}-${i}`,
+      dx: Math.round(Math.cos(angle) * dist),
+      dy: Math.round(Math.sin(angle) * dist),
+      rot: Math.round(Math.random() * 50 - 25),
+      scale: (0.6 + Math.random() * 0.6).toFixed(2),
+      delay: (Math.random() * 0.12).toFixed(2),
+    };
+  });
+}
+
+function TicketButton({ large = false, describedBy }) {
+  const [bats, setBats] = useState([]);
+  const lastBurst = useRef(0);
+  const timer = useRef(0);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  // Hover releases bats at most every 1.5s; a click always does.
+  const burst = (force) => {
+    const now = Date.now();
+    if (reducedMotion() || (!force && now - lastBurst.current < 1500)) return;
+    lastBurst.current = now;
+    burstSeq += 1;
+    setBats(makeBurst());
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setBats([]), 1400);
+  };
+
   const className = `hw-ticket-btn ${large ? 'large' : ''}`;
-  if (!TICKET_URL) {
-    return (
-      <span className={`${className} disabled`} aria-disabled="true">
-        <FaTicketAlt className="hw-ticket-icon" />
-        <span className="hw-ticket-label">Tickets Opening Soon</span>
-      </span>
-    );
-  }
+  const handlers = { onPointerEnter: () => burst(false), onClick: () => burst(true) };
   return (
-    <a href={TICKET_URL} className={className} target="_blank" rel="noopener noreferrer">
-      <FaTicketAlt className="hw-ticket-icon" />
-      <span className="hw-ticket-label">{label}</span>
-      <span className="hw-ticket-price">${TICKET_PRICE}</span>
-    </a>
+    <span className="hw-ticket-wrap">
+      {TICKET_URL ? (
+        <a href={TICKET_URL} className={className} target="_blank" rel="noopener noreferrer" {...handlers}>
+          <FaTicketAlt className="hw-ticket-icon" aria-hidden="true" />
+          {CTA_LABEL}
+        </a>
+      ) : (
+        <span className={`${className} disabled`} role="link" aria-disabled="true" aria-describedby={describedBy} {...handlers}>
+          <FaTicketAlt className="hw-ticket-icon" aria-hidden="true" />
+          Tickets on sale soon
+        </span>
+      )}
+      {bats.length > 0 && <BatBurst bats={bats} />}
+    </span>
+  );
+}
+
+function TicketNote({ id }) {
+  return (
+    <p className="hw-ticket-note" id={id}>
+      ${TICKET_PRICE} per person, welcome drink included.
+      {!TICKET_URL && (
+        <> Follow <a href={`https://www.instagram.com/${EVENT.instagram}/`} target="_blank" rel="noopener noreferrer">@{EVENT.instagram}</a> to hear the moment sales open.</>
+      )}
+    </p>
   );
 }
 
 function Countdown() {
-  const target = new Date(EVENT.startsAt).getTime();
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
@@ -128,20 +189,24 @@ function Countdown() {
     return () => clearInterval(id);
   }, []);
 
-  const diff = Math.max(0, target - now);
-  if (diff === 0) {
-    return <p className="hw-countdown-live">The party is ON — see you on the dance floor! 🎃</p>;
+  // Without a confirmed start time, count whole days to the date rather than a guessed hour.
+  if (!EVENT.startsAt) {
+    const days = Math.ceil((new Date(`${EVENT.date}T00:00:00-05:00`).getTime() - now) / 86400000);
+    if (days <= 0) return <p className="hw-countdown-live">It's party night. See you on the dance floor!</p>;
+    return <p className="hw-countdown-days">{days === 1 ? 'Tomorrow night!' : `${days} days to go`}</p>;
   }
 
-  const units = [
-    ['Days', Math.floor(diff / 86400000)],
-    ['Hours', Math.floor(diff / 3600000) % 24],
-    ['Mins', Math.floor(diff / 60000) % 60],
-    ['Secs', Math.floor(diff / 1000) % 60],
-  ];
+  const diff = Math.max(0, new Date(EVENT.startsAt).getTime() - now);
+  if (diff === 0) return <p className="hw-countdown-live">The party is on. See you on the dance floor!</p>;
 
+  const units = [
+    ['days', Math.floor(diff / 86400000)],
+    ['hrs', Math.floor(diff / 3600000) % 24],
+    ['min', Math.floor(diff / 60000) % 60],
+    ['sec', Math.floor(diff / 1000) % 60],
+  ];
   return (
-    <div className="hw-countdown" aria-label="Time until the party">
+    <div className="hw-countdown" role="timer" aria-label="Time until the party starts">
       {units.map(([label, value]) => (
         <div className="hw-count-box" key={label}>
           <span className="hw-count-num">{String(value).padStart(2, '0')}</span>
@@ -152,10 +217,50 @@ function Countdown() {
   );
 }
 
+function useIsMobile(query = '(max-width: 600px)') {
+  const [match, setMatch] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = () => setMatch(mql.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, [query]);
+  return match;
+}
+
+// On phones the description folds away behind a tap so the grid stays compact.
+function FeatureCard({ item, tone, isMobile, open, onToggle, children }) {
+  const head = (
+    <>
+      <span className="hw-card-icon" aria-hidden="true">{item.icon}</span>
+      <h4>{item.title}</h4>
+    </>
+  );
+  return (
+    <div className={`hw-card ${tone} ${open ? 'open' : ''}`}>
+      {children}
+      {isMobile ? (
+        <button type="button" className="hw-card-head" aria-expanded={open} onClick={onToggle}>
+          {head}
+        </button>
+      ) : (
+        <div className="hw-card-head">{head}</div>
+      )}
+      <p>{item.text}</p>
+    </div>
+  );
+}
+
 function Halloween() {
   const [searchParams] = useSearchParams();
   const paid = searchParams.get('ticket') === 'success';
+  const heroTicketRef = useRef(null);
+  const [showStickyCta, setShowStickyCta] = useState(false);
+  const [openCard, setOpenCard] = useState(null);
+  const isMobile = useIsMobile();
   const pageRef = useRef(null);
+  // Lights-out intro plays once per browser session.
+  const [intro, setIntro] = useState(() => !reducedMotion() && readStore('sessionStorage', 'hw-intro') !== 'seen');
 
   // Switch the shared Navbar/Footer to the dark neon theme while this page is open.
   useEffect(() => {
@@ -163,25 +268,44 @@ function Halloween() {
     return () => document.body.classList.remove('hw-theme');
   }, []);
 
-  // "Flashlight" glow that follows the cursor (mouse/trackpad only).
+  // Mobile ticket bar appears once the hero ticket button has scrolled out of view.
+  useEffect(() => {
+    const el = heroTicketRef.current;
+    if (!el || !TICKET_URL) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setShowStickyCta(!entry.isIntersecting && entry.boundingClientRect.top < 0);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!intro) return;
+    writeStore('sessionStorage', 'hw-intro', 'seen');
+    const id = setTimeout(() => setIntro(false), 2600);
+    return () => clearTimeout(id);
+  }, [intro]);
+
+  // Scroll parallax: the page exposes --hw-scroll and the CSS moves each layer at its own speed.
   useEffect(() => {
     const page = pageRef.current;
-    if (!page || !window.matchMedia('(pointer: fine)').matches) return;
+    if (!page || reducedMotion()) return;
     let frame = 0;
-    const onMove = (e) => {
+    const onScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const rect = page.getBoundingClientRect();
-        page.style.setProperty('--hw-mx', `${e.clientX - rect.left}px`);
-        page.style.setProperty('--hw-my', `${e.clientY - rect.top}px`);
+        page.style.setProperty('--hw-scroll', String(Math.min(window.scrollY, 1600)));
       });
     };
-    page.addEventListener('mousemove', onMove);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
-      page.removeEventListener('mousemove', onMove);
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
+
+  const toggle = (key) => setOpenCard((cur) => (cur === key ? null : key));
 
   return (
     <>
@@ -196,31 +320,30 @@ function Halloween() {
         <script type="application/ld+json">{JSON.stringify(eventSchema)}</script>
       </Helmet>
 
-      <div className="hw-page" ref={pageRef}>
+      <div className={`hw-page ${intro ? 'intro' : ''}`} ref={pageRef}>
+        {intro && <div className="hw-intro" aria-hidden="true" />}
         {/* ---------- Ambient effects (decorative) ---------- */}
         <div className="hw-fx" aria-hidden="true">
+          <video className="hw-smoke" autoPlay muted loop playsInline preload="auto">
+            <source src="/events/hw-smoke.webm" type="video/webm" />
+            <source src="/events/hw-smoke.mp4" type="video/mp4" />
+          </video>
+          <video className="hw-smoke flipped" autoPlay muted loop playsInline preload="auto">
+            <source src="/events/hw-smoke.webm" type="video/webm" />
+            <source src="/events/hw-smoke.mp4" type="video/mp4" />
+          </video>
           <div className="hw-lightning" />
-          <div className="hw-cursor-glow" />
-          <div className="hw-bg-moon" />
 
-          <GiBat className="hw-flybat fb-1" />
-          <GiBat className="hw-flybat fb-2" />
-          <GiBat className="hw-flybat fb-3" />
-          <GiBat className="hw-flybat fb-4" />
-          <GiBat className="hw-flybat fb-5" />
-          <GiWitchFlight className="hw-witch" />
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <div className={`hw-flybat fb-${n}`} key={n}><Bat /></div>
+          ))}
 
-          <GiGhost className="hw-ghost gh-1" />
-          <GiGhost className="hw-ghost gh-2" />
-          <GiGhost className="hw-ghost gh-3" />
+          <div className="hw-spider sp-1"><div className="hw-spider-drop"><span className="hw-thread" /><Spider /></div></div>
+          <div className="hw-spider sp-2"><div className="hw-spider-drop"><span className="hw-thread" /><Spider /></div></div>
 
-          <div className="hw-spider sp-1"><span className="hw-thread" /><GiSpiderAlt /></div>
-          <div className="hw-spider sp-2"><span className="hw-thread" /><GiSpiderAlt /></div>
-
-          <GiSpiderWeb className="hw-web web-tl" />
-          <GiSpiderWeb className="hw-web web-tr" />
-          <GiSpiderWeb className="hw-web web-left" />
-          <GiSpiderWeb className="hw-web web-right" />
+          <Cobweb className="web-tr" />
+          <Cobweb className="web-bl" />
+          <Cobweb className="web-br" />
 
           <div className="hw-embers">
             {EMBERS.map((e, i) => (
@@ -244,6 +367,17 @@ function Halloween() {
           <div className="hw-fog fog-2" />
         </div>
 
+        {/* Moon: slowly turning surface, gentle float, rises in on load */}
+        <div className="hw-moon" aria-hidden="true">
+          <span className="hw-moonlight" />
+          <div className="hw-moon-disc">
+            <img src={moonImg} alt="" />
+          </div>
+          <span className="hw-moon-cloud mc-1" />
+          <span className="hw-moon-cloud mc-2" />
+          <span className="hw-moon-cloud mc-3" />
+        </div>
+
         {paid && (
           <div className="hw-success" role="status">
             <h2>You're in! 🎃</h2>
@@ -254,108 +388,154 @@ function Halloween() {
           </div>
         )}
 
-        {/* Hero */}
+        {/* Hero: name, what it is, the facts, then straight to tickets */}
         <section className="hw-hero">
-          <h1 className="hw-title" data-aos="zoom-in">
+          <h1 className="hw-title">
             <span className="hw-title-line purple">Belly, Beats</span>
             <span className="hw-title-line pink">
               &amp; B<GiPumpkinLantern className="hw-title-pumpkin" aria-label="o" />o!
             </span>
           </h1>
-          <p className="hw-subtitle" data-aos="fade-up">{EVENT.subtitle}</p>
-          <p className="hw-script" data-aos="fade-up">Shake. Sip. Dance. Repeat.</p>
+          <p className="hw-subtitle">{EVENT.subtitle}</p>
+          <p className="hw-script">Shake. Sip. Dance. Repeat.</p>
 
-          <div className="hw-info-bar" data-aos="fade-up">
-            <div className="hw-info-row">
-              <span><FaCalendarAlt /> {EVENT.displayDate}</span>
-              <span className="hw-sep" />
-              <span><FaMapMarkerAlt /> {EVENT.city}</span>
-              <span className="hw-sep" />
-              <span className="hw-age">18+</span>
-            </div>
-            <p className="hw-info-note">— Costumes Encouraged —</p>
+          <div className="hw-info-bar">
+            <ul className="hw-info-row">
+              <li><FaCalendarAlt aria-hidden="true" /> {EVENT.displayDate}</li>
+              {EVENT.displayTime && <li><FaClock aria-hidden="true" /> {EVENT.displayTime}</li>}
+              <li><FaMapMarkerAlt aria-hidden="true" /> {EVENT.venue ? `${EVENT.venue}, Dallas` : EVENT.city}</li>
+              <li className="hw-age">18+</li>
+            </ul>
+            <p className="hw-info-note">
+              Costumes encouraged{!EVENT.venue && <>. Venue announced soon</>}
+            </p>
           </div>
 
-          <div data-aos="fade-up">
-            <p className="hw-countdown-title">The haunting begins in</p>
-            <Countdown />
-          </div>
-
-          <div className="hw-ticket-box" id="tickets" data-aos="zoom-in">
-            <TicketButton label="Get Your Tickets" large />
-            <p className="hw-ticket-note">Includes a complimentary welcome drink/beverage</p>
+          <div className="hw-ticket-box" id="tickets" ref={heroTicketRef}>
+            <TicketButton large describedBy="hw-ticket-help" />
+            <TicketNote id="hw-ticket-help" />
             {TICKET_URL && (
-              <p className="hw-secure"><FaLock /> Secure checkout powered by Stripe</p>
+              <p className="hw-secure"><FaLock aria-hidden="true" /> Secure checkout by Stripe</p>
             )}
+            <div className="hw-countdown-wrap">
+              {EVENT.startsAt && <p className="hw-countdown-title">Party starts in</p>}
+              <Countdown />
+            </div>
           </div>
         </section>
 
-        {/* Features */}
+        {/* Party crowd under club lights */}
+        <div className="hw-crowd" aria-hidden="true">
+          <span className="hw-beam b-1" />
+          <span className="hw-beam b-2" />
+          <span className="hw-beam b-3" />
+          <span className="hw-beam b-4" />
+          <Crowd />
+          <Pumpkin face="monster" className="hw-pk-crowd left" />
+          <Pumpkin face="evil" className="hw-pk-crowd right" />
+        </div>
+
+        {/* Features, grouped by what the ticket covers */}
         <section className="hw-features">
-          <h2 className="hw-section-title" data-aos="fade-up">What's Waiting For You?</h2>
-          <div className="hw-grid">
-            {FEATURES.map((f, i) => (
-              <div className={`hw-card ${f.color}`} key={f.title} data-aos="fade-up" data-aos-delay={(i % 4) * 100}>
-                <div className="hw-card-icon">{f.icon}</div>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
-              </div>
+          <h2 className="hw-section-title">What's waiting for you?</h2>
+
+          <h3 className="hw-group-title">Included with your ticket</h3>
+          <div className="hw-grid included">
+            {INCLUDED.map((item, i) => (
+              <FeatureCard
+                key={item.title}
+                item={item}
+                tone="included"
+                isMobile={isMobile}
+                open={openCard === item.title}
+                onToggle={() => toggle(item.title)}
+              >
+                {i === 0 && <Cobweb className="hw-card-web tl" />}
+              </FeatureCard>
+            ))}
+          </div>
+
+          <h3 className="hw-group-title extra">Also at the party</h3>
+          <div className="hw-grid extras">
+            {EXTRAS.map((item, i) => (
+              <FeatureCard
+                key={item.title}
+                item={item}
+                tone="extra"
+                isMobile={isMobile}
+                open={openCard === item.title}
+                onToggle={() => toggle(item.title)}
+              >
+                {i === EXTRAS.length - 1 && <Cobweb className="hw-card-web br" />}
+              </FeatureCard>
             ))}
           </div>
         </section>
 
         {/* The Night Awaits */}
-        <section className="hw-awaits" data-aos="fade-up">
+        <section className="hw-awaits">
           <h2 className="hw-script large">The Night Awaits...</h2>
           <p className="hw-awaits-lead">
             One night. One spooky dance floor.<br />Endless Halloween energy.
           </p>
-          <p className="hw-awaits-sub">Dress up. Bring your friends. Grab a drink. Hit the dance floor.</p>
-          <TicketButton label="Secure Your Spot" />
+          <p className="hw-awaits-sub">Dress up, bring your friends, grab a drink and hit the dance floor.</p>
+          <TicketButton describedBy="hw-ticket-help-2" />
+          <TicketNote id="hw-ticket-help-2" />
 
           <div className="hw-graveyard" aria-hidden="true">
             <GiTombstone className="hw-grave g-1" />
-            <GiPumpkinLantern className="hw-pumpkin p-1" />
+            <Pumpkin face="evil" className="hw-pk-grave" />
             <GiCandleFlame className="hw-candle c-1" />
             <GiTombstone className="hw-grave g-2" />
-            <GiPumpkinLantern className="hw-pumpkin p-2" />
+            <Pumpkin face="monster" className="hw-pk-grave big" />
             <GiCandleFlame className="hw-candle c-2" />
             <GiTombstone className="hw-grave g-3" />
-            <GiPumpkinLantern className="hw-pumpkin p-3" />
+            <Pumpkin face="classic" className="hw-pk-grave" />
           </div>
         </section>
 
         {/* Contact */}
         <section className="hw-contact">
           <div className="hw-contact-col">
-            <h3 className="hw-script">Follow the Vibe</h3>
-            <p>Follow us for event updates, performer announcements, costume inspiration, giveaways &amp; surprises.</p>
+            <h3 className="hw-contact-title">Follow the vibe</h3>
+            <p>Event updates, performer announcements, costume inspiration, giveaways and surprises.</p>
             <a
               href={`https://www.instagram.com/${EVENT.instagram}/`}
               target="_blank"
               rel="noopener noreferrer"
               className="hw-outline-btn"
             >
-              <FaInstagram /> @{EVENT.instagram}
+              <FaInstagram aria-hidden="true" /> @{EVENT.instagram}
             </a>
           </div>
 
           <div className="hw-contact-logo">
             <img src={logo} alt="Lotus Decor and Events" />
-            <p className="hw-partner">Media Partner: <strong>SparkShoot</strong></p>
+            <p className="hw-partner">Media partner</p>
+            <img src={sparkshootLogo} alt="SparkShoot" className="hw-partner-logo" />
           </div>
 
           <div className="hw-contact-col">
-            <h3 className="hw-script">Questions?</h3>
+            <h3 className="hw-contact-title">Questions?</h3>
             <a href={`tel:${EVENT.contactTel}`} className="hw-phone">
-              <FaPhoneAlt /> {EVENT.contactName} | {EVENT.contactPhone}
+              <FaPhoneAlt aria-hidden="true" /> {EVENT.contactName}, {EVENT.contactPhone}
             </a>
             <div className="hw-socials">
-              <a href="https://wa.me/19453389171" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
-              <a href="https://www.facebook.com/ThoranamDecors/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="https://wa.me/19453389171" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp"><FaWhatsapp /></a>
+              <a href="https://www.facebook.com/ThoranamDecors/" target="_blank" rel="noopener noreferrer" aria-label="Lotus Decor on Facebook"><FaFacebookF /></a>
             </div>
           </div>
         </section>
+
+        {/* Mobile-only ticket bar, shown after the hero button scrolls away */}
+        {TICKET_URL && (
+          <div className={`hw-sticky-cta ${showStickyCta ? 'show' : ''}`} aria-hidden={!showStickyCta}>
+            <span className="hw-sticky-info">{EVENT.displayDate}, {EVENT.city}</span>
+            <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" tabIndex={showStickyCta ? 0 : -1}>
+              {CTA_LABEL}
+            </a>
+          </div>
+        )}
       </div>
     </>
   );
