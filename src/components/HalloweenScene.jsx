@@ -99,7 +99,7 @@ function buildRow(seed, spacing, scale) {
       side: rand() < 0.5 ? -1 : 1,
       angle: 8 + rand() * 26,
       bend: 4 + rand() * 12,
-      wave: rand() < 0.65,
+      wave: rand() < 0.35,
       delay: -(rand() * 2).toFixed(2),
       tilt: -6 + rand() * 12,
       hat: costume < 0.16 ? 'witch' : costume < 0.28 ? 'horns' : costume < 0.4 ? 'cat' : costume < 0.52 ? 'bun' : null,

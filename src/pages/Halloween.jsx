@@ -82,7 +82,7 @@ function writeStore(storage, key, value) {
 
 // Rising embers — generated once so positions stay stable across re-renders.
 const EMBER_COLORS = ['#ff3fbf', '#b44cff', '#ffa630', '#39d5ff'];
-const EMBERS = Array.from({ length: 34 }, (_, i) => ({
+const EMBERS = Array.from({ length: 22 }, (_, i) => ({
   left: `${Math.random() * 100}%`,
   size: `${3 + Math.random() * 5}px`,
   duration: `${9 + Math.random() * 12}s`,
@@ -286,23 +286,57 @@ function Halloween() {
     return () => clearTimeout(id);
   }, [intro]);
 
-  // Scroll parallax: the page exposes --hw-scroll and the CSS moves each layer at its own speed.
+  // Scroll parallax. Each layer's `translate` is written directly so a scroll frame only
+  // touches these few elements (a page-wide CSS variable would restyle the whole page).
   useEffect(() => {
     const page = pageRef.current;
     if (!page || reducedMotion()) return;
+    const smoke = page.querySelector('.hw-smoke');
+    const risers = page.querySelectorAll('.hw-crowd-svg');
     let frame = 0;
+    let lastY = -1;
+    const apply = () => {
+      const y = Math.min(window.scrollY, 1600);
+      if (y === lastY) return;
+      lastY = y;
+      if (smoke) smoke.style.translate = `0 ${y * 0.18}px`;
+      const rise = `0 ${Math.max(0, 40 - y * 0.12)}px`;
+      risers.forEach((el) => { el.style.translate = rise; });
+    };
     const onScroll = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        page.style.setProperty('--hw-scroll', String(Math.min(window.scrollY, 1600)));
-      });
+      frame = requestAnimationFrame(apply);
     };
-    onScroll();
+    apply();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
     };
+  }, []);
+
+  // Pause effects that are scrolled out of view: the smoke video and the hero/crowd animations.
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page) return;
+    const video = page.querySelector('.hw-smoke');
+    const zones = [
+      [page.querySelector('.hw-hero'), 'hero-off'],
+      [page.querySelector('.hw-crowd'), 'crowd-off'],
+    ];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const zone = zones.find(([el]) => el === entry.target);
+        if (!zone) return;
+        page.classList.toggle(zone[1], !entry.isIntersecting);
+        if (zone[1] === 'hero-off' && video) {
+          if (entry.isIntersecting) video.play().catch(() => {});
+          else video.pause();
+        }
+      });
+    }, { rootMargin: '150px 0px' });
+    zones.forEach(([el]) => el && observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   const toggle = (key) => setOpenCard((cur) => (cur === key ? null : key));
@@ -325,10 +359,6 @@ function Halloween() {
         {/* ---------- Ambient effects (decorative) ---------- */}
         <div className="hw-fx" aria-hidden="true">
           <video className="hw-smoke" autoPlay muted loop playsInline preload="auto">
-            <source src="/events/hw-smoke.webm" type="video/webm" />
-            <source src="/events/hw-smoke.mp4" type="video/mp4" />
-          </video>
-          <video className="hw-smoke flipped" autoPlay muted loop playsInline preload="auto">
             <source src="/events/hw-smoke.webm" type="video/webm" />
             <source src="/events/hw-smoke.mp4" type="video/mp4" />
           </video>
@@ -367,7 +397,7 @@ function Halloween() {
           <div className="hw-fog fog-2" />
         </div>
 
-        {/* Moon: slowly turning surface, gentle float, rises in on load */}
+        {/* Moon with moonlit clouds drifting past */}
         <div className="hw-moon" aria-hidden="true">
           <span className="hw-moonlight" />
           <div className="hw-moon-disc">
