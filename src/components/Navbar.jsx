@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import logo from '../assets/logo_final.png'; // Adjust the path if needed
 
+const NAV_ITEMS = ['Home', 'About', 'Services', 'Gallery', 'Halloween', 'Contact'];
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +28,7 @@ function Navbar() {
         </div>
 
         <ul className="navbar-links desktop">
-          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item, i) => (
+          {NAV_ITEMS.map((item, i) => (
             <li key={i}>
               <Link to={`/${item.toLowerCase()}`}>{item}</Link>
             </li>
@@ -41,7 +43,7 @@ function Navbar() {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <ul>
-          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item, i) => (
+          {NAV_ITEMS.map((item, i) => (
             <li key={i} onClick={toggleMenu}>
               <Link to={`/${item.toLowerCase()}`}>{item}</Link>
             </li>

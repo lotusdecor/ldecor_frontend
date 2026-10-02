@@ -11,6 +11,7 @@ import Gallery from './pages/Gallery';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import Halloween from './pages/Halloween';
 import { useEffect } from 'react';
 
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/halloween" element={<Halloween />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
