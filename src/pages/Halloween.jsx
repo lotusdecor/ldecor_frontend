@@ -34,7 +34,7 @@ import sparkshootLogo from '../assets/events/sparkshoot-logo.webp';
 
 // Paste the Stripe Payment Link here (Stripe Dashboard → Payment Links → Create).
 // In the link's "After payment" settings, choose "Don't show confirmation page" and
-// redirect to https://lotusdecorandevents.com/halloween?ticket=success
+// redirect to https://lotusdecorandevents.com/events/halloween?ticket=success
 const TICKET_URL = '';
 const TICKET_PRICE = 30;
 const CTA_LABEL = `Get tickets for $${TICKET_PRICE}`;
@@ -111,7 +111,7 @@ const eventSchema = {
     price: TICKET_PRICE,
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
-    url: 'https://lotusdecorandevents.com/halloween',
+    url: 'https://lotusdecorandevents.com/events/halloween',
   },
   organizer: { '@type': 'Organization', name: 'Lotus Decor and Events', url: 'https://lotusdecorandevents.com' },
 };
@@ -348,7 +348,7 @@ function Halloween() {
         description="Join Lotus Decor and Events on October 30 in Dallas for an 18+ Halloween party with a live DJ, belly dancers, tarot readings, Tipsy Scoop and a costume contest. Tickets $30."
         keywords="halloween party dallas, adults only halloween, halloween event dallas tx, belly dance party, costume contest dallas, halloween tickets"
         image={`https://lotusdecorandevents.com${poster}`}
-        url="https://lotusdecorandevents.com/halloween"
+        url="https://lotusdecorandevents.com/events/halloween"
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(eventSchema)}</script>

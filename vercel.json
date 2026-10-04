@@ -1,6 +1,8 @@
 {
+    "redirects": [
+      { "source": "/halloween", "destination": "/events/halloween", "permanent": true }
+    ],
     "rewrites": [
       { "source": "/(.*)", "destination": "/" }
     ]
   }
-  

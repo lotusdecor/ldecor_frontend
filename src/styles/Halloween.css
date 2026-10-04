@@ -958,7 +958,14 @@ body.hw-theme .navbar .navbar-links li a,
 body.hw-theme .navbar.scrolled .navbar-links li a { color: #f4ecff; }
 body.hw-theme .navbar .navbar-links li a:hover { color: #ff3fbf; text-shadow: 0 0 10px #ff3fbf; }
 body.hw-theme .navbar .navbar-links li a::after { background: #ff3fbf; box-shadow: 0 0 8px #ff3fbf; }
-body.hw-theme .navbar .navbar-links li a[href='/halloween'] { color: #ffa630; text-shadow: 0 0 10px rgba(255, 166, 48, 0.8); }
+body.hw-theme .navbar .navbar-links > li.has-dropdown > a,
+body.hw-theme .navbar .navbar-dropdown li a[href='/events/halloween'] { color: #ffa630; text-shadow: 0 0 10px rgba(255, 166, 48, 0.8); }
+body.hw-theme .navbar-dropdown li { background: rgba(10, 4, 22, 0.96); }
+body.hw-theme .navbar-dropdown li:first-child { border-bottom-color: rgba(180, 76, 255, 0.35); }
+body.hw-theme .navbar-dropdown li:last-child { box-shadow: 0 14px 24px rgba(180, 76, 255, 0.25); }
+body.hw-theme .navbar .navbar-dropdown li a { color: #f4ecff; }
+body.hw-theme .navbar .navbar-dropdown li a:hover { color: #ff3fbf; background: rgba(180, 76, 255, 0.12); }
+body.hw-theme .mobile-menu ul.mobile-submenu li a { color: #c9b8e6; }
 
 body.hw-theme .mobile-menu { background: #0b0418; }
 body.hw-theme .mobile-menu ul li a { color: #f4ecff; }
