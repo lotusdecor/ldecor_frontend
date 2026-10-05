@@ -1,8 +1,22 @@
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useEffect, useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
 import logo from '../assets/logo_final.png'; // Adjust the path if needed
+import { LIVE_EVENTS, eventPath } from '../data/events';
+
+const NAV_ITEMS = [
+  { label: 'Home', path: '/home' },
+  { label: 'About', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Gallery', path: '/gallery' },
+  {
+    label: 'Events & Experiences',
+    path: '/events',
+    children: LIVE_EVENTS.map((event) => ({ label: event.navLabel, path: eventPath(event) })),
+  },
+  { label: 'Contact', path: '/contact' },
+];
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,6 +30,9 @@ function Navbar() {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  // Drop focus after a click so the :focus-within dropdown closes once we navigate.
+  const blurActive = () => document.activeElement?.blur();
+
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -26,9 +43,24 @@ function Navbar() {
         </div>
 
         <ul className="navbar-links desktop">
-          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item, i) => (
-            <li key={i}>
-              <Link to={`/${item.toLowerCase()}`}>{item}</Link>
+          {NAV_ITEMS.map((item) => (
+            <li key={item.path} className={item.children ? 'has-dropdown' : undefined}>
+              <Link to={item.path} onClick={blurActive}>
+                {item.label}
+                {item.children && <FiChevronDown className="dropdown-caret" aria-hidden="true" />}
+              </Link>
+              {item.children && (
+                <ul className="navbar-dropdown">
+                  <li>
+                    <Link to={item.path} onClick={blurActive}>All Events</Link>
+                  </li>
+                  {item.children.map((child) => (
+                    <li key={child.path}>
+                      <Link to={child.path} onClick={blurActive}>{child.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -41,9 +73,18 @@ function Navbar() {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <ul>
-          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item, i) => (
-            <li key={i} onClick={toggleMenu}>
-              <Link to={`/${item.toLowerCase()}`}>{item}</Link>
+          {NAV_ITEMS.map((item) => (
+            <li key={item.path}>
+              <Link to={item.path} onClick={toggleMenu}>{item.label}</Link>
+              {item.children && (
+                <ul className="mobile-submenu">
+                  {item.children.map((child) => (
+                    <li key={child.path}>
+                      <Link to={child.path} onClick={toggleMenu}>{child.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>

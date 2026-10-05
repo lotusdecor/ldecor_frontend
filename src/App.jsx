@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import AOS from 'aos';
@@ -11,8 +11,15 @@ import Gallery from './pages/Gallery';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import Events from './pages/Events';
+import Halloween from './pages/Halloween';
 import { useEffect } from 'react';
 
+// Old /halloween links (poster QR codes, shared links) keep working, query string included.
+function HalloweenRedirect() {
+  const { search } = useLocation();
+  return <Navigate to={`/events/halloween${search}`} replace />;
+}
 
 
 function App() {
@@ -34,6 +41,9 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/halloween" element={<Halloween />} />
+            <Route path="/halloween" element={<HalloweenRedirect />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>

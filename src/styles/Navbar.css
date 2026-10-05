@@ -49,7 +49,7 @@
   gap: 1.4rem;
   margin-left: auto;
   flex-grow: 1;
-  overflow: hidden;
+  overflow: visible; /* lets the Events dropdown hang below the bar */
 }
 
 .navbar-links li {
@@ -87,6 +87,79 @@
 }
 .navbar-links li a:hover {
   color: var(--gold);
+}
+
+/* Events dropdown (desktop) */
+.navbar-links li.has-dropdown {
+  position: relative;
+}
+
+.dropdown-caret {
+  font-size: 0.9em;
+  margin-left: 0.25rem;
+  vertical-align: -0.1em;
+  transition: transform 0.3s ease;
+}
+
+.has-dropdown:hover .dropdown-caret,
+.has-dropdown:focus-within .dropdown-caret {
+  transform: rotate(180deg);
+}
+
+/* padding-top bridges the gap so the menu stays open while the pointer moves down to it */
+.navbar-dropdown {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 210px;
+  margin: 0;
+  padding: 0.9rem 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.has-dropdown:hover .navbar-dropdown,
+.has-dropdown:focus-within .navbar-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar-dropdown li {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.navbar-dropdown li:first-child {
+  border-radius: 8px 8px 0 0;
+  padding-top: 0.4rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.navbar-dropdown li:last-child {
+  border-radius: 0 0 8px 8px;
+  padding-bottom: 0.4rem;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-links .navbar-dropdown li a,
+.navbar.scrolled .navbar-links .navbar-dropdown li a {
+  display: block;
+  padding: 0.55rem 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.navbar-links .navbar-dropdown li a::after {
+  display: none;
+}
+
+.navbar-links .navbar-dropdown li a:hover {
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
 }
 
 /* Hamburger Menu Icon */
@@ -156,6 +229,20 @@
 
 .mobile-menu ul li a:hover {
   color: var(--gold);
+}
+
+.mobile-menu ul.mobile-submenu {
+  margin-top: 0.6rem;
+  padding: 0;
+}
+
+.mobile-menu ul.mobile-submenu li {
+  margin: 0.5rem 0;
+}
+
+.mobile-menu ul.mobile-submenu li a {
+  font-size: 1.25rem;
+  color: #6b6f86;
 }
 
 /* Back to Top Button */

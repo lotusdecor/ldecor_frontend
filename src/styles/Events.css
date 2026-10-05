@@ -1,0 +1,229 @@
+.events-page {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #fffaf7;
+  color: #1b1f3b;
+  padding: 9rem 1.5rem 5rem; /* clears the fixed navbar */
+}
+
+/* Hero */
+.events-hero {
+  max-width: 760px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.events-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  margin: 0;
+  color: #d4af37;
+}
+
+.events-divider {
+  width: 60px;
+  height: 4px;
+  background: #d4af37;
+  margin: 1rem auto 1.5rem;
+  border-radius: 2px;
+}
+
+.events-hero p {
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+/* Grid */
+.events-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(27, 31, 59, 0.08);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+a.event-card:hover,
+a.event-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(27, 31, 59, 0.14);
+}
+
+a.event-card:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
+.event-card-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #f4ede4;
+}
+
+.event-card-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s ease;
+}
+
+a.event-card:hover .event-card-media > img {
+  transform: scale(1.04);
+}
+
+.event-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #fbf4ea 0%, #efe0c6 100%);
+}
+
+.event-card-placeholder img {
+  width: 55%;
+  opacity: 0.85;
+}
+
+.event-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: #d4af37;
+  color: #1b1f3b;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.event-card-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem 1.6rem 1.8rem;
+}
+
+.event-card-category {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8952a;
+}
+
+.event-card-text h2 {
+  font-size: 1.9rem;
+  margin: 0.4rem 0 0.6rem;
+  line-height: 1.2;
+}
+
+.event-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  margin: 0 0 0.8rem;
+  font-size: 1.1rem;
+  color: #6b6f86;
+}
+
+.event-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.event-card-summary {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 1.2rem;
+}
+
+.event-card-cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.event-card-cta svg {
+  transition: transform 0.3s ease;
+}
+
+a.event-card:hover .event-card-cta svg {
+  transform: translateX(4px);
+}
+
+/* Bottom call to action */
+.events-cta {
+  max-width: 700px;
+  margin: 5rem auto 0;
+  text-align: center;
+}
+
+.events-cta h2 {
+  font-size: 2.2rem;
+  margin: 0 0 0.6rem;
+}
+
+.events-cta p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 0 0 1.8rem;
+}
+
+.events-cta-btn {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  background: #d4af37;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.events-cta-btn:hover {
+  background: #b8952a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .events-page {
+    padding: 8rem 1rem 4rem;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card,
+  .event-card-media > img,
+  .event-card-cta svg {
+    transition: none;
+  }
+}
