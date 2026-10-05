@@ -71,6 +71,21 @@ export function Bat({ className = '' }) {
   );
 }
 
+export function Ghost({ className = '' }) {
+  return (
+    <svg className={`hw-ghost-svg ${className}`} viewBox="0 0 60 72" aria-hidden="true">
+      <path
+        className="hw-ghost-body"
+        d="M30 2 C14 2 6 14 6 30 L6 60 Q10 69 15 61 Q20 53 24 62 Q30 71 36 62 Q40 53 45 61 Q50 69 54 60 L54 30 C54 14 46 2 30 2 Z"
+      />
+      <path className="hw-ghost-body" d="M7 34 Q-1 38 1 46 Q5 42 8 43 Z M53 34 Q61 38 59 46 Q55 42 52 43 Z" />
+      <ellipse className="hw-ghost-face" cx="22" cy="27" rx="3.6" ry="5.2" />
+      <ellipse className="hw-ghost-face" cx="38" cy="27" rx="3.6" ry="5.2" />
+      <ellipse className="hw-ghost-face" cx="30" cy="41" rx="4" ry="5.5" />
+    </svg>
+  );
+}
+
 // Small seeded RNG so the crowd looks the same on every visit.
 function seeded(seed) {
   let a = seed;
@@ -312,17 +327,17 @@ export function Cobweb({ className = '' }) {
   );
 }
 
-// ---------- Swarm of bats that bursts out of the ticket button ----------
+// ---------- Swarm of bats and ghosts that bursts out of the ticket button ----------
 export function BatBurst({ bats }) {
   return (
     <span className="hw-burst" aria-hidden="true">
       {bats.map((b) => (
         <span
           key={b.id}
-          className="hw-burst-bat"
+          className={b.ghost ? 'hw-burst-bat ghost' : 'hw-burst-bat'}
           style={{ '--dx': `${b.dx}px`, '--dy': `${b.dy}px`, '--rot': `${b.rot}deg`, '--s': b.scale, animationDelay: `${b.delay}s` }}
         >
-          <Bat />
+          {b.ghost ? <Ghost /> : <Bat />}
         </span>
       ))}
     </span>

@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import '../styles/Halloween.css';
 import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
@@ -9,8 +8,6 @@ import {
   FaMapMarkerAlt,
   FaTicketAlt,
   FaInstagram,
-  FaWhatsapp,
-  FaFacebookF,
   FaPhoneAlt,
   FaLock,
 } from 'react-icons/fa';
@@ -18,8 +15,8 @@ import {
   GiHeadphones,
   GiFlowerTwirl,
   GiMicrophone,
-  GiCardRandom,
-  GiIceCreamCone,
+  GiWrappedSweet,
+  GiSpiderWeb,
   GiPumpkinLantern,
   GiCrown,
   GiMartini,
@@ -28,27 +25,24 @@ import {
 } from 'react-icons/gi';
 import poster from '../assets/events/halloween-poster.jpg';
 import logo from '../assets/logo_final.png';
-import { Bat, BatBurst, Cobweb, Crowd, Pumpkin, Spider } from '../components/HalloweenScene';
+import { Bat, BatBurst, Cobweb, Crowd, Ghost, Pumpkin, Spider } from '../components/HalloweenScene';
 import moonImg from '../assets/events/moon.webp';
 import sparkshootLogo from '../assets/events/sparkshoot-logo.webp';
+import SoundToggle from '../components/SpookySound';
 
-// Paste the Stripe Payment Link here (Stripe Dashboard → Payment Links → Create).
-// In the link's "After payment" settings, choose "Don't show confirmation page" and
-// redirect to https://lotusdecorandevents.com/events/halloween?ticket=success
-const TICKET_URL = '';
+// Tickets are sold on Eventbrite, which emails buyers their tickets.
+const TICKET_URL = 'https://www.eventbrite.com/e/belly-beats-boo-tickets-2002920714775?aff=oddtdtcreator';
 const TICKET_PRICE = 30;
 const CTA_LABEL = `Get tickets for $${TICKET_PRICE}`;
 
 const EVENT = {
   name: 'Belly, Beats & Boo!',
-  subtitle: 'An Adults-Only Halloween Affair',
-  date: '2026-10-30',
-  displayDate: 'October 30',
-  // Fill these in when confirmed. Until then the page shows "Venue announced soon"
-  // and a days-only countdown instead of a guessed start time.
-  displayTime: '', // e.g. '8 PM – 1 AM'
-  startsAt: '', // e.g. '2026-10-30T20:00:00-05:00' (Dallas is UTC-05:00 in October)
-  venue: '', // e.g. 'The Venue Name, 123 Main St'
+  subtitle: 'The Ultimate Halloween Night in Dallas',
+  date: '2026-10-31',
+  displayDate: 'October 31',
+  displayTime: 'Doors open 8 PM',
+  startsAt: '2026-10-31T20:00:00-05:00', // Dallas is UTC-05:00 in October
+  venue: 'Rotate Social',
   city: 'Dallas, TX',
   contactName: 'Priyanka',
   contactPhone: '+1 (945) 338-9171',
@@ -59,15 +53,15 @@ const EVENT = {
 // "Included" cards are what the ticket price covers; "extras" are also at the party.
 const INCLUDED = [
   { icon: <GiHeadphones />, title: 'Live DJ', text: 'Dance all night to high-energy beats and Halloween vibes.' },
-  { icon: <GiFlowerTwirl />, title: 'Belly dancers', text: 'A live belly dance performance that brings the party to life.' },
-  { icon: <GiCardRandom />, title: 'Tarot reading', text: 'A complimentary tarot reading to see what the cards have in store for you.' },
-  { icon: <GiPumpkinLantern />, title: 'Costume show & contest', text: 'Come dressed to impress and show off your Halloween look on stage.' },
-  { icon: <GiMicrophone />, title: 'Entertainment by MC', text: 'Our MC keeps the energy up and the crowd together all evening.' },
+  { icon: <GiFlowerTwirl />, title: 'Belly dancers', text: 'Mesmerizing live belly dance performances that bring the party to life.' },
+  { icon: <GiMicrophone />, title: 'Live MC & entertainment', text: 'Our MC keeps the energy up and the crowd together all evening.' },
+  { icon: <GiPumpkinLantern />, title: 'Costume show & contest', text: 'Kids and adults: come dressed to impress and show off your Halloween look on stage.' },
   { icon: <GiCrown />, title: 'Influencer meet & greet', text: 'Get up close and personal with a featured influencer.' },
+  { icon: <GiWrappedSweet />, title: 'Goodie at entry', text: 'Every ticket includes a Halloween goodie when you walk in.' },
 ];
 const EXTRAS = [
-  { icon: <GiIceCreamCone />, title: 'Tipsy Scoop', text: 'Liquor-infused ice cream creations from Tipsy Scoop.' },
-  { icon: <GiMartini />, title: 'Food & drinks', text: 'Food and drinks available to buy throughout the evening.' },
+  { icon: <GiMartini />, title: 'Food & drinks', text: 'Food and drinks available all evening.' },
+  { icon: <GiSpiderWeb />, title: 'Halloween surprises', text: 'Plenty of spooky surprises waiting throughout the night.' },
 ];
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -104,17 +98,47 @@ const eventSchema = {
     address: { '@type': 'PostalAddress', addressLocality: 'Dallas', addressRegion: 'TX', addressCountry: 'US' },
   },
   image: [`https://lotusdecorandevents.com${poster}`],
-  description: 'An adults-only (18+) Halloween party in Dallas with a live DJ, belly dancers, tarot readings, Tipsy Scoop, a costume contest and more.',
-  typicalAgeRange: '18-',
+  description: 'The ultimate Halloween night in Dallas at Rotate Social with a live DJ, belly dancers, a live MC, a kids and adults costume contest, an influencer meet & greet and more.',
   offers: {
     '@type': 'Offer',
     price: TICKET_PRICE,
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
-    url: 'https://lotusdecorandevents.com/events/halloween',
+    url: TICKET_URL,
   },
   organizer: { '@type': 'Organization', name: 'Lotus Decor and Events', url: 'https://lotusdecorandevents.com' },
 };
+
+// Pairs of glowing eyes that open, blink and vanish in dark corners of the page.
+const EYES = [
+  { top: '330px', left: '3%', color: '#ffa630', duration: '11s', delay: '-2s' },
+  { top: '640px', right: '4%', color: '#7dff6a', duration: '13s', delay: '-8s' },
+  { top: '1150px', left: '2%', color: '#ff3b3b', duration: '12s', delay: '-5s' },
+  { top: '1750px', right: '3%', color: '#ffa630', duration: '14s', delay: '-11s' },
+  { top: '2550px', left: '5%', color: '#7dff6a', duration: '10s', delay: '-1s' },
+  // size scales the pair: small ones read as far away, big ones as close
+  { top: '170px', right: '12%', color: '#c77dff', duration: '15s', delay: '-6s', size: 0.75 },
+  { top: '470px', left: '8%', color: '#ffa630', duration: '12s', delay: '-9s', size: 1.4 },
+  { top: '900px', right: '2%', color: '#ff3b3b', duration: '11s', delay: '-4s' },
+  { top: '1420px', right: '7%', color: '#7dff6a', duration: '16s', delay: '-12s', size: 0.7 },
+  { top: '2000px', left: '3%', color: '#c77dff', duration: '13s', delay: '-3s', size: 1.3 },
+  { top: '2320px', right: '5%', color: '#ffa630', duration: '12s', delay: '-7s' },
+];
+
+// Pumpkins and candy that rain down when the countdown reaches zero.
+const CONFETTI_CHARS = ['🎃', '🍬', '🍭', '👻', '🦇', '🍫'];
+function makeConfetti() {
+  return Array.from({ length: 48 }, (_, i) => ({
+    id: i,
+    char: CONFETTI_CHARS[i % CONFETTI_CHARS.length],
+    left: `${Math.random() * 100}%`,
+    size: `${1.3 + Math.random() * 1.4}rem`,
+    duration: `${3 + Math.random() * 2.5}s`,
+    delay: `${Math.random() * 1.8}s`,
+    spin: `${Math.round(Math.random() * 720 - 360)}deg`,
+    drift: `${Math.round(Math.random() * 160 - 80)}px`,
+  }));
+}
 
 let burstSeq = 0;
 function makeBurst() {
@@ -128,6 +152,7 @@ function makeBurst() {
       rot: Math.round(Math.random() * 50 - 25),
       scale: (0.6 + Math.random() * 0.6).toFixed(2),
       delay: (Math.random() * 0.12).toFixed(2),
+      ghost: i % 3 === 1, // every third one is a ghost
     };
   });
 }
@@ -173,7 +198,7 @@ function TicketButton({ large = false, describedBy }) {
 function TicketNote({ id }) {
   return (
     <p className="hw-ticket-note" id={id}>
-      ${TICKET_PRICE} per person, welcome drink included.
+      ${TICKET_PRICE} per person, includes a goodie at entry.
       {!TICKET_URL && (
         <> Follow <a href={`https://www.instagram.com/${EVENT.instagram}/`} target="_blank" rel="noopener noreferrer">@{EVENT.instagram}</a> to hear the moment sales open.</>
       )}
@@ -181,13 +206,23 @@ function TicketNote({ id }) {
   );
 }
 
-function Countdown() {
+function Countdown({ onLive }) {
   const [now, setNow] = useState(() => Date.now());
 
+  // onLive fires once, only if the page is open at the moment the countdown hits zero.
   useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    const start = EVENT.startsAt ? new Date(EVENT.startsAt).getTime() : 0;
+    let counting = Date.now() < start;
+    const id = setInterval(() => {
+      const t = Date.now();
+      setNow(t);
+      if (counting && t >= start) {
+        counting = false;
+        onLive?.();
+      }
+    }, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [onLive]);
 
   // Without a confirmed start time, count whole days to the date rather than a guessed hour.
   if (!EVENT.startsAt) {
@@ -239,6 +274,7 @@ function FeatureCard({ item, tone, isMobile, open, onToggle, children }) {
   return (
     <div className={`hw-card ${tone} ${open ? 'open' : ''}`}>
       {children}
+      <span className="hw-card-ghost" aria-hidden="true"><Ghost /></span>
       {isMobile ? (
         <button type="button" className="hw-card-head" aria-expanded={open} onClick={onToggle}>
           {head}
@@ -252,10 +288,6 @@ function FeatureCard({ item, tone, isMobile, open, onToggle, children }) {
 }
 
 function Halloween() {
-  const [searchParams] = useSearchParams();
-  const paid = searchParams.get('ticket') === 'success';
-  const heroTicketRef = useRef(null);
-  const [showStickyCta, setShowStickyCta] = useState(false);
   const [openCard, setOpenCard] = useState(null);
   const isMobile = useIsMobile();
   const pageRef = useRef(null);
@@ -266,17 +298,6 @@ function Halloween() {
   useEffect(() => {
     document.body.classList.add('hw-theme');
     return () => document.body.classList.remove('hw-theme');
-  }, []);
-
-  // Mobile ticket bar appears once the hero ticket button has scrolled out of view.
-  useEffect(() => {
-    const el = heroTicketRef.current;
-    if (!el || !TICKET_URL) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      setShowStickyCta(!entry.isIntersecting && entry.boundingClientRect.top < 0);
-    });
-    observer.observe(el);
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -341,12 +362,22 @@ function Halloween() {
 
   const toggle = (key) => setOpenCard((cur) => (cur === key ? null : key));
 
+  const [confetti, setConfetti] = useState(null);
+  const celebrate = useCallback(() => {
+    if (!reducedMotion()) setConfetti(makeConfetti());
+  }, []);
+  useEffect(() => {
+    if (!confetti) return;
+    const id = setTimeout(() => setConfetti(null), 7000);
+    return () => clearTimeout(id);
+  }, [confetti]);
+
   return (
     <>
       <SEO
-        title="Belly, Beats & Boo! – Adults-Only Halloween Party in Dallas"
-        description="Join Lotus Decor and Events on October 30 in Dallas for an 18+ Halloween party with a live DJ, belly dancers, tarot readings, Tipsy Scoop and a costume contest. Tickets $30."
-        keywords="halloween party dallas, adults only halloween, halloween event dallas tx, belly dance party, costume contest dallas, halloween tickets"
+        title="Belly, Beats & Boo! – Halloween Party at Rotate Social, Dallas"
+        description="Join Lotus Decor and Events on October 31 at Rotate Social in Dallas for a Halloween night with a live DJ, belly dancers, a live MC, a kids and adults costume contest and more. Doors open 8 PM. Tickets $30."
+        keywords="halloween party dallas, rotate social halloween, halloween event dallas tx, belly dance party, costume contest dallas, halloween tickets"
         image={`https://lotusdecorandevents.com${poster}`}
         url="https://lotusdecorandevents.com/events/halloween"
       />
@@ -366,6 +397,10 @@ function Halloween() {
 
           {[1, 2, 3, 4, 5, 6].map((n) => (
             <div className={`hw-flybat fb-${n}`} key={n}><Bat /></div>
+          ))}
+
+          {[1, 2, 3, 4].map((n) => (
+            <div className={`hw-flyghost gh-${n}`} key={n}><Ghost /></div>
           ))}
 
           <div className="hw-spider sp-1"><div className="hw-spider-drop"><span className="hw-thread" /><Spider /></div></div>
@@ -393,6 +428,16 @@ function Halloween() {
             ))}
           </div>
 
+          {EYES.map((e, i) => (
+            <span
+              key={i}
+              className={`hw-eyes ey-${i + 1}`}
+              style={{ top: e.top, left: e.left, right: e.right, '--c': e.color, '--z': e.size || 1, animationDuration: e.duration, animationDelay: e.delay }}
+            >
+              <i /><i />
+            </span>
+          ))}
+
           <div className="hw-fog fog-1" />
           <div className="hw-fog fog-2" />
         </div>
@@ -407,16 +452,6 @@ function Halloween() {
           <span className="hw-moon-cloud mc-2" />
           <span className="hw-moon-cloud mc-3" />
         </div>
-
-        {paid && (
-          <div className="hw-success" role="status">
-            <h2>You're in! 🎃</h2>
-            <p>
-              Thanks for getting your ticket. Your receipt has been emailed to you, so please bring it
-              (on your phone is fine) to the door. See you on {EVENT.displayDate}!
-            </p>
-          </div>
-        )}
 
         {/* Hero: name, what it is, the facts, then straight to tickets */}
         <section className="hw-hero">
@@ -434,22 +469,21 @@ function Halloween() {
               <li><FaCalendarAlt aria-hidden="true" /> {EVENT.displayDate}</li>
               {EVENT.displayTime && <li><FaClock aria-hidden="true" /> {EVENT.displayTime}</li>}
               <li><FaMapMarkerAlt aria-hidden="true" /> {EVENT.venue ? `${EVENT.venue}, Dallas` : EVENT.city}</li>
-              <li className="hw-age">18+</li>
             </ul>
             <p className="hw-info-note">
               Costumes encouraged{!EVENT.venue && <>. Venue announced soon</>}
             </p>
           </div>
 
-          <div className="hw-ticket-box" id="tickets" ref={heroTicketRef}>
+          <div className="hw-ticket-box" id="tickets">
             <TicketButton large describedBy="hw-ticket-help" />
             <TicketNote id="hw-ticket-help" />
             {TICKET_URL && (
-              <p className="hw-secure"><FaLock aria-hidden="true" /> Secure checkout by Stripe</p>
+              <p className="hw-secure"><FaLock aria-hidden="true" /> Secure checkout by Eventbrite</p>
             )}
             <div className="hw-countdown-wrap">
-              {EVENT.startsAt && <p className="hw-countdown-title">Party starts in</p>}
-              <Countdown />
+              {EVENT.startsAt && <p className="hw-countdown-title">Doors open in</p>}
+              <Countdown onLive={celebrate} />
             </div>
           </div>
         </section>
@@ -508,9 +542,7 @@ function Halloween() {
           <p className="hw-awaits-lead">
             One night. One spooky dance floor.<br />Endless Halloween energy.
           </p>
-          <p className="hw-awaits-sub">Dress up, bring your friends, grab a drink and hit the dance floor.</p>
-          <TicketButton describedBy="hw-ticket-help-2" />
-          <TicketNote id="hw-ticket-help-2" />
+          <p className="hw-awaits-sub">Grab your crew, dress to impress, and come make some unforgettable Halloween memories!</p>
 
           <div className="hw-graveyard" aria-hidden="true">
             <GiTombstone className="hw-grave g-1" />
@@ -550,22 +582,23 @@ function Halloween() {
             <a href={`tel:${EVENT.contactTel}`} className="hw-phone">
               <FaPhoneAlt aria-hidden="true" /> {EVENT.contactName}, {EVENT.contactPhone}
             </a>
-            <div className="hw-socials">
-              <a href="https://wa.me/19453389171" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp"><FaWhatsapp /></a>
-              <a href="https://www.facebook.com/ThoranamDecors/" target="_blank" rel="noopener noreferrer" aria-label="Lotus Decor on Facebook"><FaFacebookF /></a>
-            </div>
           </div>
         </section>
 
-        {/* Mobile-only ticket bar, shown after the hero button scrolls away */}
-        {TICKET_URL && (
-          <div className={`hw-sticky-cta ${showStickyCta ? 'show' : ''}`} aria-hidden={!showStickyCta}>
-            <span className="hw-sticky-info">{EVENT.displayDate}, {EVENT.city}</span>
-            <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" tabIndex={showStickyCta ? 0 : -1}>
-              {CTA_LABEL}
-            </a>
+        {confetti && (
+          <div className="hw-confetti" aria-hidden="true">
+            {confetti.map((c) => (
+              <span
+                key={c.id}
+                style={{ left: c.left, fontSize: c.size, animationDuration: c.duration, animationDelay: c.delay, '--spin': c.spin, '--drift': c.drift }}
+              >
+                {c.char}
+              </span>
+            ))}
           </div>
         )}
+
+        <SoundToggle />
       </div>
     </>
   );

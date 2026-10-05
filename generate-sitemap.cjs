@@ -18,7 +18,8 @@ const sitemap = new SitemapStream({ hostname: 'https://lotusdecorandevents.com' 
   '/services',
   '/gallery',
   '/contact',
-  '/halloween',
+  '/events',
+  '/events/halloween',
   // Add more routes as needed
 ].forEach(route => sitemap.write({ url: route }));
 

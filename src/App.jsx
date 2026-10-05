@@ -15,8 +15,7 @@ import Events from './pages/Events';
 import Halloween from './pages/Halloween';
 import { useEffect } from 'react';
 
-// Old /halloween links (poster QR codes, shared links, Stripe redirect) keep working.
-// Keeps the query string so ?ticket=success still reaches the page.
+// Old /halloween links (poster QR codes, shared links) keep working, query string included.
 function HalloweenRedirect() {
   const { search } = useLocation();
   return <Navigate to={`/events/halloween${search}`} replace />;

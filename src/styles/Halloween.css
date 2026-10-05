@@ -194,6 +194,72 @@ body.hw-theme .navbar a:focus-visible {
   100% { transform: translate(115vw, 10px) rotate(-8deg) scaleX(1); }
 }
 
+/* Ghosts drifting the other way: they float across, bob, and fade in and out */
+.hw-flyghost {
+  position: absolute;
+  left: 0;
+  width: 54px;
+  opacity: 0;
+  animation: hw-haunt linear infinite;
+}
+.gh-1 { top: 210px;  width: 58px; animation-duration: 24s; animation-delay: -4s; }
+.gh-2 { top: 520px;  width: 40px; animation-duration: 30s; animation-delay: -16s; }
+.gh-3 { top: 1500px; width: 50px; animation-duration: 27s; animation-delay: -9s; }
+.gh-4 { top: 2350px; width: 62px; animation-duration: 32s; animation-delay: -21s; }
+
+.hw-ghost-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(57, 213, 255, 0.85));
+  animation: hw-ghost-bob 2.6s ease-in-out infinite alternate;
+}
+.gh-2 .hw-ghost-svg, .gh-4 .hw-ghost-svg { animation-duration: 3.2s; }
+.hw-ghost-body { fill: rgba(244, 236, 255, 0.92); }
+.hw-ghost-face { fill: #1a0b2e; }
+@keyframes hw-ghost-bob {
+  from { transform: translateY(-10px) rotate(-7deg); }
+  to   { transform: translateY(10px) rotate(5deg); }
+}
+@keyframes hw-haunt {
+  0%   { transform: translate(110vw, 0); opacity: 0; }
+  8%   { opacity: 0.85; }
+  35%  { transform: translate(70vw, -50px); opacity: 0.85; }
+  50%  { opacity: 0.35; }
+  65%  { transform: translate(30vw, 30px); opacity: 0.85; }
+  92%  { opacity: 0.85; }
+  100% { transform: translate(-15vw, -20px); opacity: 0; }
+}
+
+/* Glowing eyes that open in the dark, blink once and fade away */
+.hw-eyes {
+  position: absolute;
+  display: flex;
+  gap: calc(14px * var(--z, 1));
+  opacity: 0;
+  animation: hw-eyes ease-in-out infinite;
+}
+.hw-eyes i {
+  display: block;
+  width: calc(11px * var(--z, 1));
+  height: calc(7px * var(--z, 1));
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  background: var(--c);
+  box-shadow: 0 0 6px var(--c), 0 0 14px var(--c);
+}
+.hw-eyes i:first-child { transform: rotate(12deg); }
+.hw-eyes i:last-child { transform: rotate(-12deg); }
+@keyframes hw-eyes {
+  0%, 55% { opacity: 0; transform: scaleY(0.1); }
+  60% { opacity: 1; transform: scaleY(1); }
+  70% { opacity: 1; transform: scaleY(1); }
+  71.5% { opacity: 1; transform: scaleY(0.1); }
+  73% { opacity: 1; transform: scaleY(1); }
+  84% { opacity: 1; transform: scaleY(1); }
+  88%, 100% { opacity: 0; transform: scaleY(0.1); }
+}
+
 /* Spiders: sway on the thread and occasionally drop down then climb back up */
 .hw-spider {
   position: absolute;
@@ -341,26 +407,6 @@ body.hw-theme .navbar a:focus-visible {
   100% { transform: translateX(25%); }
 }
 
-/* ---------- Success banner ---------- */
-.hw-success {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  padding: 1.5rem 2rem;
-  border: 2px solid var(--hw-orange);
-  border-radius: 18px;
-  background: rgba(255, 166, 48, 0.08);
-  box-shadow: 0 0 25px rgba(255, 166, 48, 0.45), inset 0 0 20px rgba(255, 166, 48, 0.15);
-}
-.hw-success h2 {
-  margin: 0 0 0.5rem;
-  font-family: 'Fredoka', sans-serif;
-  color: var(--hw-orange);
-  font-size: 2rem;
-}
-.hw-success p { margin: 0; color: var(--hw-text); }
-
 /* ---------- Hero ---------- */
 .hw-title {
   margin: 0;
@@ -379,6 +425,18 @@ body.hw-theme .navbar a:focus-visible {
 .hw-title-line.pink {
   color: #ffe0f5;
   text-shadow: 0 0 6px #fff, 0 0 14px var(--hw-pink), 0 0 30px var(--hw-pink), 0 0 60px var(--hw-pink);
+}
+/* Now and then a line sputters like a failing neon tube (the two lines on different cycles) */
+.hw-title-line { animation: hw-neon-flicker 7s linear infinite; }
+.hw-title-line.pink { animation-duration: 11s; animation-delay: -4s; }
+@keyframes hw-neon-flicker {
+  0%, 88%, 100% { opacity: 1; }
+  89% { opacity: 0.35; }
+  90% { opacity: 1; }
+  91.5% { opacity: 0.2; }
+  92.5% { opacity: 0.9; }
+  93% { opacity: 0.45; }
+  94% { opacity: 1; }
 }
 .hw-title-pumpkin {
   vertical-align: -0.12em;
@@ -431,7 +489,6 @@ body.hw-theme .navbar a:focus-visible {
 .hw-info-row li { padding: 0 1.2rem; }
 .hw-info-row li + li { border-left: 2px solid var(--hw-purple); }
 .hw-info-row svg { color: var(--hw-pink); margin-right: 0.35rem; vertical-align: -0.12em; }
-.hw-age { font-size: 1.1em; }
 .hw-info-note {
   margin: 0.45rem 0 0;
   color: #9fe6ff;
@@ -689,6 +746,22 @@ body.hw-theme .navbar a:focus-visible {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .hw-card:hover { transform: translateY(-4px); }
+
+/* A little ghost peeks round the card's right edge on hover (or when opened on phones) */
+.hw-card-ghost {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 34px;
+  pointer-events: none;
+  transform: translateX(110%) rotate(20deg);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hw-card-ghost .hw-ghost-svg { animation: none; }
+.hw-card:hover .hw-card-ghost,
+.hw-card.open .hw-card-ghost { transform: translateX(35%) rotate(-14deg); }
+.hw-card:hover .hw-card-ghost .hw-ghost-svg,
+.hw-card.open .hw-card-ghost .hw-ghost-svg { animation: hw-ghost-bob 1.6s ease-in-out infinite alternate; }
 .hw-card.extra {
   --c: rgba(201, 184, 230, 0.45);
   box-shadow: none;
@@ -738,7 +811,6 @@ button.hw-card-head { cursor: pointer; }
   font-size: 1.05rem;
   color: var(--hw-muted);
 }
-.hw-awaits .hw-ticket-note { font-size: 0.95rem; color: var(--hw-muted); }
 
 /* ---------- Graveyard ---------- */
 .hw-graveyard {
@@ -824,9 +896,6 @@ button.hw-card-head { cursor: pointer; }
   text-decoration: none;
 }
 .hw-phone svg { color: var(--hw-pink); margin-right: 0.4rem; vertical-align: -0.1em; }
-.hw-socials { display: flex; justify-content: center; gap: 1.2rem; font-size: 1.6rem; }
-.hw-socials a { color: var(--hw-pink); filter: drop-shadow(0 0 6px var(--hw-pink)); transition: transform 0.2s ease; }
-.hw-socials a:hover { transform: scale(1.15); }
 
 /* ---------- Lights-out intro (once per session) ---------- */
 .hw-intro {
@@ -868,7 +937,7 @@ button.hw-card-head { cursor: pointer; }
   to { opacity: 1; transform: none; }
 }
 
-/* ---------- Bat burst from the ticket button ---------- */
+/* ---------- Bat and ghost burst from the ticket button ---------- */
 .hw-ticket-wrap { position: relative; display: inline-block; }
 .hw-burst {
   position: absolute;
@@ -886,6 +955,7 @@ button.hw-card-head { cursor: pointer; }
   width: 36px;
   animation: hw-burst 1.2s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
+.hw-burst-bat.ghost { left: -15px; top: -18px; width: 30px; }
 @keyframes hw-burst {
   0% { transform: translate(0, 0) scale(0.2) rotate(0deg); opacity: 0; }
   12% { opacity: 1; }
@@ -905,43 +975,6 @@ button.hw-card-head { cursor: pointer; }
 }
 .hw-pk:hover .hw-pk-eyes { transform: scaleY(0.6); }
 .hw-pk:hover .hw-pk-mouth { transform: scale(1.1, 1.25); }
-
-/* ---------- Mobile ticket bar ---------- */
-.hw-sticky-cta { display: none; }
-@media (max-width: 768px) {
-  .hw-sticky-cta {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1500;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.8rem;
-    padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
-    background: rgba(10, 4, 22, 0.94);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 63, 191, 0.5);
-    box-shadow: 0 -6px 24px rgba(255, 63, 191, 0.25);
-    transform: translateY(110%);
-    transition: transform 0.3s ease;
-  }
-  .hw-sticky-cta.show { transform: translateY(0); }
-  .hw-sticky-info { font-size: 0.9rem; color: var(--hw-muted); }
-  .hw-sticky-cta a {
-    flex: none;
-    padding: 0.65rem 1.1rem;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #ff3fbf, #b44cff);
-    color: #fff;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 0 14px rgba(255, 63, 191, 0.6);
-  }
-  body.hw-theme .back-to-top { bottom: 84px; }
-}
 
 /* ---------- Shared Navbar / Footer overrides (body.hw-theme set by Halloween.jsx) ---------- */
 body.hw-theme { background-color: #07030f; }
@@ -987,6 +1020,57 @@ body.hw-theme .back-to-top {
   box-shadow: 0 0 18px rgba(255, 63, 191, 0.7);
 }
 
+/* ---------- Pumpkin and candy shower when the countdown hits zero ---------- */
+.hw-confetti {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hw-confetti span {
+  position: absolute;
+  top: -3rem;
+  line-height: 1;
+  animation: hw-confetti-fall ease-in both;
+}
+@keyframes hw-confetti-fall {
+  from { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  85% { opacity: 1; }
+  to { transform: translate(var(--drift), 110vh) rotate(var(--spin)); opacity: 0; }
+}
+
+/* ---------- Spooky sound toggle (bottom-left; back-to-top owns bottom-right) ---------- */
+.hw-sound-btn {
+  position: fixed;
+  left: 24px;
+  bottom: 30px;
+  z-index: 1500;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid rgba(180, 76, 255, 0.7);
+  border-radius: 50%;
+  background: rgba(10, 4, 22, 0.85);
+  color: #c9b8e6;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(180, 76, 255, 0.45);
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.hw-sound-btn:hover { transform: scale(1.08); color: #fff; }
+.hw-sound-btn.on {
+  color: #fff;
+  border-color: var(--hw-pink);
+  box-shadow: 0 0 18px rgba(255, 63, 191, 0.75);
+  animation: hw-sound-pulse 1.8s ease-in-out infinite;
+}
+@keyframes hw-sound-pulse {
+  50% { box-shadow: 0 0 26px rgba(255, 63, 191, 0.95); }
+}
+
 /* ---------- Pause animations that are scrolled out of view (classes set by Halloween.jsx) ---------- */
 .hw-page.hero-off .hw-moon *,
 .hw-page.hero-off .hw-lightning,
@@ -995,6 +1079,9 @@ body.hw-theme .back-to-top {
 .hw-page.hero-off .web-tr *,
 .hw-page.hero-off .fb-1, .hw-page.hero-off .fb-2, .hw-page.hero-off .fb-3, .hw-page.hero-off .fb-4,
 .hw-page.hero-off .fb-1 *, .hw-page.hero-off .fb-2 *, .hw-page.hero-off .fb-3 *, .hw-page.hero-off .fb-4 *,
+.hw-page.hero-off .gh-1, .hw-page.hero-off .gh-2,
+.hw-page.hero-off .hw-title-line, .hw-page.hero-off .ey-1, .hw-page.hero-off .ey-6, .hw-page.hero-off .ey-7,
+.hw-page.hero-off .gh-1 *, .hw-page.hero-off .gh-2 *,
 .hw-page.hero-off .fog-1,
 .hw-page.crowd-off .hw-crowd * {
   animation-play-state: paused !important;
@@ -1009,13 +1096,15 @@ body.hw-theme .back-to-top {
   .hw-page { padding-top: 120px; }
   .hw-contact { grid-template-columns: 1fr; padding: 1.6rem 1.2rem; }
   .hw-contact-logo { order: -1; }
-  .hw-moon { width: 130px; height: 130px; top: 115px; left: -45px; }
+  /* behind the hero text on narrow screens so it never covers the title */
+  .hw-moon { z-index: 0; width: 130px; height: 130px; top: 115px; left: -45px; }
   .web-bl, .web-br { display: none; }
   .hw-moonlight { width: 420px; height: 420px; }
   .hw-cobweb { width: 170px; height: 170px; }
   .hw-card-web { width: 70px; height: 70px; }
   .mc-1, .mc-3 { width: 180px; }
-  .sp-2, .fb-3, .fb-4, .fog-2, .b-2, .b-4 { display: none; }
+  .sp-2, .fb-3, .fb-4, .gh-2, .ey-2, .ey-4, .ey-6, .ey-8, .ey-10, .fog-2, .b-2, .b-4 { display: none; }
+  .hw-sound-btn { left: 16px; bottom: 20px; width: 42px; height: 42px; font-size: 1.1rem; }
   .hw-embers span:nth-child(2n) { display: none; }
   .hw-count-box { min-width: 58px; }
   .hw-count-num { font-size: 1.45rem; }
@@ -1038,7 +1127,13 @@ body.hw-theme .back-to-top {
 }
 
 @media (max-width: 520px) {
-  .hw-info-row li { padding: 0 0.7rem; }
+  /* keep all four countdown boxes on one row */
+  .hw-countdown { flex-wrap: nowrap; gap: 0.45rem; }
+  .hw-count-box { flex: 1 1 0; min-width: 0; max-width: 72px; padding: 0.45rem 0.2rem 0.35rem; }
+  /* stack the facts; a divider at the start of a wrapped line looks broken */
+  .hw-info-row { flex-direction: column; gap: 0.35rem; }
+  .hw-info-row li { padding: 0; }
+  .hw-info-row li + li { border-left: 0; }
   .hw-ticket-btn { padding: 0.8rem 1.3rem; }
   .hw-section-title::before,
   .hw-section-title::after { display: none; }
@@ -1049,5 +1144,5 @@ body.hw-theme .back-to-top {
   .hw-page *,
   .hw-page *::before,
   .hw-page *::after { animation: none !important; transition: none !important; }
-  .hw-lightning, .hw-flybat, .hw-embers, .hw-fog, .hw-smoke, .hw-beam { display: none; }
+  .hw-lightning, .hw-flybat, .hw-flyghost, .hw-eyes, .hw-confetti, .hw-embers, .hw-fog, .hw-smoke, .hw-beam { display: none; }
 }
