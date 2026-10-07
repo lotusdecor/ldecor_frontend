@@ -30,7 +30,7 @@ import moonImg from '../assets/events/moon.webp';
 import sparkshootLogo from '../assets/events/sparkshoot-logo.webp';
 import SoundToggle from '../components/SpookySound';
 
-// Tickets are sold on Eventbrite, which emails buyers their tickets.
+// Tickets are sold on Xpat, which emails buyers their tickets.
 const TICKET_URL = 'https://xpat.events/events/belly-beats-boo-frisco-tx-2026';
 const TICKET_PRICE = 30;
 const CTA_LABEL = `Get tickets for $${TICKET_PRICE}`;
