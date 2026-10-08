@@ -479,7 +479,7 @@ function Halloween() {
             <TicketButton large describedBy="hw-ticket-help" />
             <TicketNote id="hw-ticket-help" />
             {TICKET_URL && (
-              <p className="hw-secure"><FaLock aria-hidden="true" /> Secure checkout by Eventbrite</p>
+              <p className="hw-secure"><FaLock aria-hidden="true" /> Secure checkout by Xpat</p>
             )}
             <div className="hw-countdown-wrap">
               {EVENT.startsAt && <p className="hw-countdown-title">Doors open in</p>}
