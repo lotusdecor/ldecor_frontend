@@ -47,7 +47,7 @@ const EVENT = {
   contactName: 'Priyanka',
   contactPhone: '+1 (945) 338-9171',
   contactTel: '+19453389171',
-  instagram: 'lotusdecorandevents',
+  instagram: 'lotus.decor.events',
 };
 
 // "Included" cards are what the ticket price covers; "extras" are also at the party.
